@@ -2,3 +2,4 @@ do zainstalowania
 1. npm install
 2. npm install bcrypt
 3. npm install mongoose
+4. stwórz .env z bazą MONGO
