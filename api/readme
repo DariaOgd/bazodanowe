@@ -1,0 +1,4 @@
+do zainstalowania
+1. npm install
+2. npm install bcrypt
+3. npm install mongoose
