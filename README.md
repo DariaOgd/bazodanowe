@@ -1,4 +1,5 @@
 ### Funkcje aplikacji
+## Priorytet: 1 - najwyższy
 
 | Identyfikator | Nazwa                     | Opis                                                     | Priorytet | Kategoria         |
 |---------------|---------------------------|----------------------------------------------------------|-----------|-------------------|
