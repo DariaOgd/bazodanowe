@@ -1,5 +1,8 @@
 ### Funkcje aplikacji
-## Priorytet: 1 - najwyższy
+## Priorytet:
+#1 - Najwyższy priorytet
+#2 - Średni priorytet
+#3 - Niski priorytet
 ## Identyfikacja : f - funkcjonalne; nf - niefunkcjonalne
 
 | Identyfikator | Nazwa                     | Opis                                                     | Priorytet | Kategoria         |
@@ -15,5 +18,6 @@
 | 9f            | Czat                      | Umożliwia komunikację pomiędzy użytkownikami             | 3         | Funkcjonalne      |
 | 10f             | Filtrowanie ogłoszeń      | Umożliwia użytkownikowi filtrowanie ogłoszeń             | 3         | Funkcjonalne      |
 | 11f             | Sortowanie ogłoszeń      | Pozwala użytkownikowi sortować ogłoszenia                | 3         | Funkcjonalne      |
-| 13nf            | Przechodzenie pomiędzy funkcjonalnościami poprzez maksymalnie 5 kliknięć | Umożliwia użytkownikowi szybkie przechodzenie między funkcjonalnościami | 2 | Niefunkcjonalna |
-| 14nf            | Graficzny interfejs       | Będzie istniał graficzny interfejs                       | 2         | Niefunkcjonalna  |
+| 13nf            | Graficzny interfejs       | Będzie istniał graficzny interfejs                       | 1         | Niefunkcjonalna  |
+| 14nf            | Przechodzenie pomiędzy funkcjonalnościami poprzez maksymalnie 5 kliknięć | Umożliwia użytkownikowi szybkie przechodzenie między funkcjonalnościami | 2 | Niefunkcjonalna |
+
