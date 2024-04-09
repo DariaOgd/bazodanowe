@@ -1,5 +1,6 @@
 ### Funkcje aplikacji
 ## Priorytet: 1 - najwyższy
+## Identyfikacja : f - funkcjonalne; nf - niefunkcjonalne
 
 | Identyfikator | Nazwa                     | Opis                                                     | Priorytet | Kategoria         |
 |---------------|---------------------------|----------------------------------------------------------|-----------|-------------------|
