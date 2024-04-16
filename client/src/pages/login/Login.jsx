@@ -24,7 +24,7 @@ function Login() {
   return (
     <div className="login">
       <form onSubmit={handleSubmit}>
-        <h1>Sign in</h1>
+        <h1>Zaloguj się</h1>
         <label htmlFor=""></label>
         <input
           name="Email"
@@ -36,13 +36,13 @@ function Login() {
         <label htmlFor=""></label>
         <input
           name="password"
-          placeholder="password"
+          placeholder="Hasło"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">Zaloguj się</button>
         {error && error}
-        <a href="/register">Dont have account?</a>
+        <a href="/register">Nie masz konta?</a>
 
       </form>
     </div>

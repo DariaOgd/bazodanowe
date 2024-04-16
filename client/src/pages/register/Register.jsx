@@ -35,17 +35,17 @@ function Register(){
   return (
     <div className="register">
       <form onSubmit={handleSubmit}>
-        <h1>Create account</h1>
+        <h1>Zarejestruj się</h1>
         <label htmlFor="email"></label>
         <input type="text" name="email" value={user.email} onChange={handleChange} placeholder='Email'/>
         <label htmlFor="password"></label>
-        <input type="password" name="password" value={user.password} onChange={handleChange} placeholder='Password'/>
+        <input type="password" name="password" value={user.password} onChange={handleChange} placeholder='Hasło'/>
         <label htmlFor="name"></label>
-        <input type="text" name="name" value={user.name} onChange={handleChange} placeholder='Full name' />
+        <input type="text" name="name" value={user.name} onChange={handleChange} placeholder='Imię' />
         <label htmlFor="address"></label>
-        <input type="text" name="address" value={user.address} onChange={handleChange} placeholder='Address' />
-        <button type="submit">Register</button>
-        <a href="/login">Sign up</a>
+        <input type="text" name="address" value={user.address} onChange={handleChange} placeholder='Adres' />
+        <button type="submit">Zarejestruj się</button>
+        <a href="/login">Masz juz konto?</a>
       </form>
     </div>
   )
