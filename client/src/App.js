@@ -9,7 +9,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import NavbarDefault from './components/navbar/NavbarDefault';
+// import NavbarDefault from './components/navbar/NavbarDefault';
 
 const queryClient = new QueryClient(); // Create the QueryClient instance
 
@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <BrowserRouter> {/* Wrap your app with BrowserRouter */}
-          <NavbarDefault />
+          
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />  

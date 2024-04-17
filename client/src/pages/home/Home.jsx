@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./Home.scss";
+import NavbarDefault from "../../components/navbar/NavbarDefault";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
 
     return (
-    <div></div>
+    <div>
+        <NavbarDefault></NavbarDefault>
+    </div>
     )
 }
 
