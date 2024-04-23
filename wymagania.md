@@ -13,7 +13,7 @@
 | 4f             | Przeglądanie szczegółów  | Umożliwia użytkownikowi przeglądanie szczegółów ogłoszeń | 1         | Funkcjonalne      |
 | 5f             | Zarządzanie koszykiem     | Pozwala użytkownikowi dodawać, usuwać i przeglądać zawartość koszyka | 1      | Funkcjonalne      |
 | 6f             | Wyświetlanie informacji o koszyku | Pozwala użytkownikowi zobaczyć informacje co znajduje się w koszyku | 2         | Funkcjonalne      |
-| 7f            | Składanie zamówienia      | Umożliwia użytkownikowi złożenie i zakupienie zamówienia             | 2         | Funkcjonalne      |
+| 7f            | Składanie zamówienia      | Umożliwia użytkownikowi złożenie i proces zakupienie zamówienia             | 2         | Funkcjonalne      |
 | 8f            | Wyświetlanie zamówień     | Pozwala użytkownikowi przeglądać swoje zamówienia        | 2         | Funkcjonalne      |
 | 9f            | Czat                      | Umożliwia komunikację pomiędzy użytkownikami             | 3         | Funkcjonalne      |
 | 10f             | Filtrowanie ogłoszeń      | Umożliwia użytkownikowi filtrowanie ogłoszeń             | 3         | Funkcjonalne      |
