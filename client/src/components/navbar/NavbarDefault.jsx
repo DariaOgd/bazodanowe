@@ -11,12 +11,12 @@ import newRequest from "../../utils/newRequest";
 function NavbarDefault() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
-  const [dropdownOpen, setDropdownOpen] = useState(false); // State to manage dropdown visibility
+  const [dropdownOpen, setDropdownOpen] = useState(false); 
 
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
-      localStorage.removeItem("currentUser"); // Remove the user data from localStorage
+      localStorage.removeItem("currentUser"); // 
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -45,12 +45,12 @@ function NavbarDefault() {
             </Form>
           </Nav>
           {currentUser ? (
-            <div className="dropdown ml-auto"> {/* Add ml-auto class to align dropdown to the right */}
+            <div className="dropdown ml-auto"> {}
               <button
                 className="btn btn-secondary dropdown-toggle"
                 type="button"
                 id="dropdownMenuButton"
-                onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle dropdown visibility
+                onClick={() => setDropdownOpen(!dropdownOpen)} //
               >
                 {currentUser?.name}
               </button>

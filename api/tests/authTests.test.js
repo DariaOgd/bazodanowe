@@ -5,7 +5,7 @@ import User from '../models/user.model.js';
 describe('Auth Controller', () => {
   describe('register', () => {
     it('should register a new user', async () => {
-      // Mock request and response objects
+      // 
       const req = {
         body: {
           email: 'test@example.com',
