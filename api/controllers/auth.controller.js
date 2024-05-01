@@ -31,12 +31,16 @@ export const register = async (req, res, next) => {
           id: user._id,
         },
         process.env.JWT_KEY
+        
       );
-  
+      console.log("Generated Token:", token);
+
       const { password, ...info } = user._doc;
-      res.cookie("accessToken", token, {
+      res.cookie('accessToken', token, {
         httpOnly: true,
+        
       });
+      
   
       res.status(200).send(info);
       console.log(`User with email "${req.body.email}" logged in successfully.`); 
