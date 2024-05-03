@@ -15,27 +15,25 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
     },
-    category:{
-        type:String,
-        required : true,
-
+    category: {
+      type: String,
+      required: true,
     },
     price: {
       type: Number,
       required: true,
       validate: {
-        validator: function(value) {
+        validator: function (value) {
           return value > 0;
         },
         message: "Cena musi być liczbą dodatnią.",
       },
     },
-    
     images: {
-      type: [String],
+      type: [String], // Store URLs of uploaded images
       required: false,
     },
-    state:{
+    state: {
       type: String,
       required: true,
       enum: ["nowy", "używany", "uszkodzony"],
@@ -43,7 +41,7 @@ const ProductSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-    }
+    },
   },
   {
     timestamps: false, // Wyłączamy domyślne znaczniki czasowe
