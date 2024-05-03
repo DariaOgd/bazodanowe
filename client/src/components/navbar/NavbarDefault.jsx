@@ -28,7 +28,7 @@ function NavbarDefault() {
       <Container fluid>
         <Navbar.Brand href="#">
           <img
-            src="../minilogo.png" // Zmiana ścieżki do logo
+            src="../minilogo.png" 
             width="40"
             height="40"
             className="d-inline-block align-top"
