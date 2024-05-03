@@ -26,7 +26,15 @@ function NavbarDefault() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" id="nav">
       <Container fluid>
-        <Navbar.Brand href="#">Logo</Navbar.Brand>
+        <Navbar.Brand href="#">
+          <img
+            src="../minilogo.png" // Zmiana ścieżki do logo
+            width="40"
+            height="40"
+            className="d-inline-block align-top"
+            alt="Logo"
+  />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -57,7 +65,7 @@ function NavbarDefault() {
               <ul className={`dropdown-menu${dropdownOpen ? ' show' : ''} dropdown-menu-end`} aria-labelledby="dropdownMenuButton">
                 {/* Add "dropdown-menu-right" class to align the dropdown to the right */}
                 {/* Add custom CSS class to handle overflow-x */}
-                <li className="custom-dropdown-item"><a className="dropdown-item" href="#">Dodaj produkt</a></li>
+                <li className="custom-dropdown-item"><a className="dropdown-item" href="/add">Dodaj produkt</a></li>
                 <li className="custom-dropdown-item"><a className="dropdown-item" href="#">Zamówienia</a></li>
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
                 <li className="custom-dropdown-item">

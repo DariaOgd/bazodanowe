@@ -102,6 +102,7 @@ const Add = () => {
             <input
               type="number"
               name="price"
+              min="1"
               placeholder="Product price"
               onChange={handleChange}
             />
