@@ -19,6 +19,16 @@
     .top-section {
         display: flex;
         gap: 20px;
+        position: relative; /* Ensure position is relative for z-index to work */
+        z-index: 1; /* Set initial z-index */
+    
+        // Other styles...
+    
+        .rightMenu {
+            // Other styles...
+            
+            z-index: 2; /* Set higher z-index when open */
+        }
 
         .sort-section {
             display: flex;
