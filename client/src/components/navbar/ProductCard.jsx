@@ -1,25 +1,26 @@
-import React from 'react'
-import "./ProductCard.scss"
-import {Link} from 'react-router-dom';
+import React from 'react';
+import './ProductCard.scss';
+import { Link } from 'react-router-dom';
 
-const ProductCard = ({item}) => {
-  return (
-    <Link to={`/product/${item._id}`} className='link'>
-        <div className='productCard'>
-            <img src={item.img} alt=""></img>
-            <div className='info'>
-                <div className="user">
-                    <span>{item.username}</span>
+const ProductCard = ({ item }) => {
+    return (
+        <Link to={`/product/${item._id}`} className="link">
+            <div className="card" >
+                <img src={item.img} className="card-img-top" height="200px"  alt="" />
+                <div className="card-body">
+                    <div className="user">
+                        <span>{item.username}</span>
+                    </div>
+                    <h5 className="card-title">{item.title}</h5>
+                    <p className="card-text">{item.desc}</p>
                 </div>
-                <h2 id='title'>{item.title}</h2>
-                <p>{item.desc}</p>
+                <div className="card-footer d-flex justify-content-between align-items-center">
+                    <h6>${item.price}</h6>
+                    <button className="btn btn-primary">Add to Cart</button>
+                </div>
             </div>
-            <hr/>
-            <div className='details'></div>
-                <h2 id='price'>${item.price}</h2>
-        </div>
-    </Link>
-  )
-}
+        </Link>
+    );
+};
 
-export default ProductCard
+export default ProductCard;
