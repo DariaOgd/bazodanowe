@@ -22,8 +22,12 @@ function Login() {
   };
 
   return (
-    <div className="login">
+    <div className="body">
+       <div className="login">
       <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          
+        </div>
         <h1>Zaloguj się</h1>
         <label htmlFor=""></label>
         <input
@@ -46,6 +50,12 @@ function Login() {
 
       </form>
     </div>
+    <div className="right">
+      <img src="img.svg" alt="" />
+    </div>
+
+    </div>
+   
   );
 }
 
