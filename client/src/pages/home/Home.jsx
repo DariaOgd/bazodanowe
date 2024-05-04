@@ -3,7 +3,9 @@ import "./Home.scss";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../../components/navbar/ProductCard";
-import { products } from "../../testdata.js";
+//import { products } from "../../testdata.js";
+import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest.js";
 
 function Home() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -11,6 +13,14 @@ function Home() {
     const [open, setOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
 
+    const { isLoading, error, data } = useQuery({
+        queryKey: ['repoData'],
+        queryFn: () => newRequest.get("/products").then(res=>{
+            return res.data;
+        })
+      })
+
+      console.log(data);
     const reSort = (type) => {
         setSort(type);
         setOpen(false);
@@ -33,10 +43,10 @@ function Home() {
                 <div className="top-section">
                     <div className="sort-section">
                         <div className="left">
-                            <span>Zakres cenowy</span>
+                            {/* <span>Zakres cenowy</span>
                             <input type="" placeholder="min"></input>
                             <input type="" placeholder="max"></input>
-                            <button>Zastosuj</button>
+                            <button>Zastosuj</button> */}
                         </div>
                         <div className="right">
                             <span className="sortBy">Sortuj:</span>
@@ -65,9 +75,13 @@ function Home() {
                     </div>
                 <div className="books">
                     <div className="cards">
-                        {products
-                            .filter(product => !selectedCategory || product.category === selectedCategory)
-                            .map(product => (
+                        {isLoading
+                        ? "loading"
+                        : error
+                        ? "Something went wrong"
+                        :data
+                            .filter((product) => !selectedCategory || product.category === selectedCategory)
+                            .map((product) => (
                                 <ProductCard key={product._id} item={product} />
                             ))}
                     </div>
