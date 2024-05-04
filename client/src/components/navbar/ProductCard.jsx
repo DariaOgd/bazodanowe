@@ -11,7 +11,7 @@ const ProductCard = ({ item }) => {
                     <div className="user">
                         <span className='user-name'>{item.username}</span>
                     </div>
-                    <h5 className="card-title">{item.title}</h5>
+                    <h5 className="card-title">{item.title[0]}</h5>
           
                     
                 </div>
