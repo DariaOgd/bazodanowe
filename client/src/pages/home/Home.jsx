@@ -17,6 +17,7 @@ function Home() {
         queryKey: ['repoData'],
         queryFn: () => newRequest.get("/products").then(res => res.data)
     });
+    console.log(data)
 
     // Define sorting function
     const sortProducts = (products, sortingType) => {
@@ -40,7 +41,13 @@ function Home() {
     const categories = ["Fiction", "Non-fiction", "Mystery", "Romance", "Fantasy", "Science Fiction", "Thriller", "Horror"];
 
     const filterByCategory = (category) => {
-        setSelectedCategory(category);
+        setSelectedCategory((prevCategory) => {
+            // If the clicked category is the same as the previously selected category,
+            // reset selected category to null (show all books) and return null.
+            if (prevCategory === category) return null;
+            // Otherwise, set the selected category to the clicked category.
+            return category;
+        });
     };
 
     const navigate = useNavigate();
@@ -49,15 +56,14 @@ function Home() {
         <div>
             <NavbarDefault setSearchQuery={setSearchQuery} /> {/* Pass setSearchQuery prop */}
             <div className="container">
-                <h1 id='greeting'>Witaj {currentUser?.name}!</h1>
+                <h1 id="greeting">Witaj {currentUser?.name}!</h1>
                 <div className="top-section">
                     <div className="sort-section">
-                        <div className="left">
-                        </div>
+                        <div className="left"></div>
                         <div className="right">
                             <span className="sortBy">Sortuj:</span>
                             <span className="sortType">{sort === "newest" ? "Od najnowszych" : "Od najstarszych"}</span>
-                            <img src="../downarrow.png" alt="" onClick={() => setOpen(!open)}></img>
+                            <img src="../downarrow.png" alt="" onClick={() => setOpen(!open)} />
                             {open && (
                                 <div className="rightMenu">
                                     <span onClick={() => reSort("newest")}>Najnowsze</span>
@@ -72,7 +78,11 @@ function Home() {
                         <h3>Kategorie</h3>
                         <ul>
                             {categories.map((category, index) => (
-                                <li key={index} onClick={() => filterByCategory(category)}>
+                                <li
+                                    key={index}
+                                    onClick={() => filterByCategory(category)}
+                                    className={selectedCategory === category ? "selectedCategory" : ""}
+                                >
                                     {category}
                                 </li>
                             ))}
@@ -80,19 +90,19 @@ function Home() {
                     </div>
                     <div className="books">
                         <div className="cards">
-                            {isLoading
-                                ? "loading"
-                                : error
-                                ? "Something went wrong"
-                                : sortedData
-                                    .filter((product) => 
-                                        (!selectedCategory || product.category === selectedCategory) && // Filter by selected category
+                            {isLoading ? (
+                                "loading"
+                            ) : error ? (
+                                "Something went wrong"
+                            ) : (
+                                sortedData
+                                    .filter((product) => (!selectedCategory || product.category === selectedCategory) && // Filter by selected category
                                         (searchQuery.trim() === "" || // Filter by search query (case insensitive)
-                                        (product.title && product.title.toLowerCase().includes(searchQuery.toLowerCase())) // Null check for product.title
-                                    ))
-                                    .map((product) => (
-                                        <ProductCard key={product._id} item={product} />
-                                    ))}
+                                            (product.title &&
+                                                product.title.toLowerCase().includes(searchQuery.toLowerCase()))) // Null check for product.title
+                                    )
+                                    .map((product) => <ProductCard key={product._id} item={product} />)
+                            )}
                         </div>
                     </div>
                 </div>
