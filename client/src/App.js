@@ -9,10 +9,12 @@ import Add from "./pages/add/Add"
 import {
   QueryClient,
   QueryClientProvider,
+  useQuery,
 } from "@tanstack/react-query";
 // import NavbarDefault from './components/navbar/NavbarDefault';
 
 const queryClient = new QueryClient(); // Create the QueryClient instance
+
 
 function App() {
   return (
