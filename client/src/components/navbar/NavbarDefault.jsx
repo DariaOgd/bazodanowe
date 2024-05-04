@@ -33,6 +33,7 @@ function NavbarDefault() {
             height="40"
             className="d-inline-block align-top"
             alt="Logo"
+            href="/"
   />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

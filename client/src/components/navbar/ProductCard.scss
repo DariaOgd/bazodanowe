@@ -13,6 +13,16 @@
         object-fit: cover;
     }
 
+    .user {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+        color: #555;
+        span{
+            color: rebeccapurple;
+        }
+
     .info {
         padding: 15px;
         display: flex;
@@ -21,12 +31,7 @@
         height: 200px; /* Set a fixed height for the info section */
         flex: 1; /* Allow the info section to take up remaining space */
 
-        .user {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
-            color: #555;
+        
         }
 
         #title {
@@ -66,4 +71,13 @@
 
 .card{
     width: 14rem;
+    height: rem;
+
+    .user{
+        span{
+            color: rebeccapurple;
+            font-size: 12px;
+            text-decoration: none;
+        }
+    }
 }

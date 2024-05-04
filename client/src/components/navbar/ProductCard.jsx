@@ -9,7 +9,7 @@ const ProductCard = ({ item }) => {
                 <img src={item.img} className="card-img-top" height="200px"  alt="" />
                 <div className="card-body">
                     <div className="user">
-                        <span>{item.username}</span>
+                        <span className='user-name'>{item.username}</span>
                     </div>
                     <h5 className="card-title">{item.title}</h5>
                     <p className="card-text">{item.desc}</p>

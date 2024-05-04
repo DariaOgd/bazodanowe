@@ -5,7 +5,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 import "./Add.scss";
-
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
   const [files, setFiles] = useState([]);
@@ -45,12 +44,9 @@ const Add = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["products"]);
-      navigate("/");
+      navigate("/")
     },
   });
-
-  // Define book-related categories
-  const bookCategories = ["Fiction", "Non-fiction", "Mystery", "Romance", "Fantasy", "Science Fiction", "Thriller", "Horror"];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,15 +67,15 @@ const Add = () => {
               onChange={handleChange}
             />
             <label htmlFor="">Category</label>
-            <select class="form-select" aria-label="Default select example" name="category" onChange={handleChange}>
-              {bookCategories.map((category, index) => (
-                <option key={index} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
+            <input
+              type="text"
+              name="category"
+              placeholder="Product category"
+              onChange={handleChange}
+            />
             <div className="images">
               <div className="imagesInputs">
+                
                 <label htmlFor="">Upload Images</label>
                 <input
                   type="file"
