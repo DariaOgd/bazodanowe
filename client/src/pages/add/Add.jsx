@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { productReducer, INITIAL_STATE } from "../../reducers/productReducer";
 import upload from "../../utils/upload";
+import NavbarDefault from "../../components/navbar/NavbarDefault";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
@@ -52,9 +53,12 @@ const Add = () => {
     e.preventDefault();
     mutation.mutate(state);
   };
+  const bookCategories = ["Fiction", "Non-fiction", "Mystery", "Romance", "Fantasy", "Science Fiction", "Thriller", "Horror"];
 
   return (
-    <div className="add">
+    <div className="">
+      <NavbarDefault></NavbarDefault>
+      <div className="add">
       <div className="container">
         <h1>Add New Product</h1>
         <div className="sections">
@@ -67,12 +71,13 @@ const Add = () => {
               onChange={handleChange}
             />
             <label htmlFor="">Category</label>
-            <input
-              type="text"
-              name="category"
-              placeholder="Product category"
-              onChange={handleChange}
-            />
+            <select className="form-select" aria-label="Default select example" name="category" onChange={handleChange}>
+              {bookCategories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
             <div className="images">
               <div className="imagesInputs">
                 
@@ -117,6 +122,10 @@ const Add = () => {
         </div>
       </div>
     </div>
+
+    </div>
+    
+    
   );
 };
 

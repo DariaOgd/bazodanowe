@@ -33,10 +33,10 @@ function Home() {
                 <div className="top-section">
                     <div className="sort-section">
                         <div className="left">
-                            <span>Zakres cenowy</span>
+                            {/* <span>Zakres cenowy</span>
                             <input type="" placeholder="min"></input>
                             <input type="" placeholder="max"></input>
-                            <button>Zastosuj</button>
+                            <button>Zastosuj</button> */}
                         </div>
                         <div className="right">
                             <span className="sortBy">Sortuj:</span>

@@ -12,11 +12,12 @@ const ProductCard = ({ item }) => {
                         <span className='user-name'>{item.username}</span>
                     </div>
                     <h5 className="card-title">{item.title}</h5>
-                    <p className="card-text">{item.desc}</p>
+          
+                    
                 </div>
-                <div className="card-footer d-flex justify-content-between align-items-center">
-                    <h6>${item.price}</h6>
-                    <button className="btn btn-primary">Add to Cart</button>
+                <div className="card-footer d-flex justify-content-between align-items-spaceline">
+                    <p>${item.price}</p>
+                    <button className="btn">Add to Cart</button>
                 </div>
             </div>
         </Link>

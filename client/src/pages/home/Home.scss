@@ -1,5 +1,6 @@
-// Update Home.scss with the following styles
+/* Update Home.scss with the following styles */
 
+/* General styles */
 #greeting {
     font-size: 25px;
     color: rgb(182, 8, 156);
@@ -16,20 +17,14 @@
     flex-direction: column;
     gap: 15px;
 
+    /* Top section styles */
     .top-section {
         display: flex;
+        justify-content: space-between;
         gap: 20px;
-        position: relative; /* Ensure position is relative for z-index to work */
-        z-index: 1; /* Set initial z-index */
-    
-        // Other styles...
-    
-        .rightMenu {
-            // Other styles...
-            
-            z-index: 2; /* Set higher z-index when open */
-        }
+        align-items: center;
 
+        /* Sort section styles */
         .sort-section {
             display: flex;
             align-items: center;
@@ -41,6 +36,7 @@
                 gap: 10px;
                 color: #555;
                 font-weight: 300;
+                width: 70vw;
 
                 input {
                     padding: 5px;
@@ -73,10 +69,12 @@
                 .sortBy {
                     color: #555;
                     font-weight: 300;
+                    font-size: 13px;
                 }
 
                 .sortType {
                     font-weight: 500;
+                    font-size: 13px;
                 }
 
                 img {
@@ -96,6 +94,8 @@
                     flex-direction: column;
                     gap: 20px;
                     color: #555;
+                    z-index: 2; /* Set higher z-index when open */
+                    font-size: 14px;
 
                     span {
                         cursor: pointer;
@@ -104,6 +104,7 @@
             }
         }
 
+        /* Sidebar styles */
         .sidebar {
             h3 {
                 margin-bottom: 10px;
@@ -117,6 +118,7 @@
                 li {
                     cursor: pointer;
                     margin-bottom: 5px;
+
                     &:hover {
                         color: rgb(182, 8, 156);
                     }
@@ -125,32 +127,34 @@
         }
     }
 
+    /* Books section styles */
     .books {
         .cards {
             display: flex;
-            
             gap: 30px;
         }
     }
 }
-.bottom{
+
+/* Bottom section styles */
+.bottom {
     margin-top: 10px;
     display: flex;
 
-    .sidebar{
+    .sidebar {
         flex: 1;
     }
-    .books{
+
+    .books {
         flex: 4;
         display: flex;
     }
 }
 
+/* Sidebar styles */
 .sidebar {
-    background-color: #f9f9f9;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin-right: 20px;
 
     h3 {
@@ -167,7 +171,7 @@
         li {
             margin-bottom: 10px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 12px;
             color: #666;
 
             &:hover {
