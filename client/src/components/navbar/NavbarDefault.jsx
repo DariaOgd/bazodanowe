@@ -8,19 +8,25 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import newRequest from "../../utils/newRequest";
 
-function NavbarDefault() {
+function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
-  const [dropdownOpen, setDropdownOpen] = useState(false); 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState(""); // State for search input
 
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
-      localStorage.removeItem("currentUser"); // 
+      localStorage.removeItem("currentUser");
       navigate("/");
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value); // Update search input state
+    setSearchQuery(e.target.value); // Pass search query to parent component
   };
 
   return (
@@ -28,13 +34,13 @@ function NavbarDefault() {
       <Container fluid>
         <Navbar.Brand href="#">
           <img
-            src="../minilogo.png" 
+            src="../minilogo.png"
             width="40"
             height="40"
             className="d-inline-block align-top"
             alt="Logo"
             href="/"
-  />
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -49,23 +55,23 @@ function NavbarDefault() {
                 placeholder="Szukaj"
                 className="me-2"
                 aria-label="Szukaj"
+                value={searchInput} // Bind search input value to state
+                onChange={handleSearch} // Call handleSearch function on change
               />
-              <Button variant="outline-success">Szukaj</Button>
+              
             </Form>
           </Nav>
           {currentUser ? (
-            <div className="dropdown ml-auto"> {}
+            <div className="dropdown ml-auto">
               <button
                 className="btn btn-secondary dropdown-toggle"
                 type="button"
                 id="dropdownMenuButton"
-                onClick={() => setDropdownOpen(!dropdownOpen)} //
+                onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 {currentUser?.name}
               </button>
               <ul className={`dropdown-menu${dropdownOpen ? ' show' : ''} dropdown-menu-end`} aria-labelledby="dropdownMenuButton">
-                {/* Add "dropdown-menu-right" class to align the dropdown to the right */}
-                {/* Add custom CSS class to handle overflow-x */}
                 <li className="custom-dropdown-item"><a className="dropdown-item" href="/add">Dodaj produkt</a></li>
                 <li className="custom-dropdown-item"><a className="dropdown-item" href="#">Zamówienia</a></li>
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
@@ -74,7 +80,6 @@ function NavbarDefault() {
                     Wyloguj się
                   </Button>
                 </li>
-                
               </ul>
             </div>
           ) : (

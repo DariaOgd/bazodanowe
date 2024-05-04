@@ -3,24 +3,34 @@ import "./Home.scss";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../../components/navbar/ProductCard";
-//import { products } from "../../testdata.js";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest.js";
 
 function Home() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    const [sort, setSort] = useState("dateAdded");
+    const [sort, setSort] = useState("newest"); // Default sorting type
     const [open, setOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
     const { isLoading, error, data } = useQuery({
         queryKey: ['repoData'],
-        queryFn: () => newRequest.get("/products").then(res=>{
-            return res.data;
-        })
-      })
+        queryFn: () => newRequest.get("/products").then(res => res.data)
+    });
 
-      console.log(data);
+    // Define sorting function
+    const sortProducts = (products, sortingType) => {
+        const sortedProducts = [...products];
+        if (sortingType === "newest") {
+            sortedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        } else {
+            sortedProducts.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        }
+        return sortedProducts;
+    };
+
+    const sortedData = sortProducts(data || [], sort); // Initialize sortedData as an empty array if data is undefined
+
     const reSort = (type) => {
         setSort(type);
         setOpen(false);
@@ -37,16 +47,12 @@ function Home() {
 
     return (
         <div>
-            <NavbarDefault />
+            <NavbarDefault setSearchQuery={setSearchQuery} /> {/* Pass setSearchQuery prop */}
             <div className="container">
                 <h1 id='greeting'>Witaj {currentUser?.name}!</h1>
                 <div className="top-section">
                     <div className="sort-section">
                         <div className="left">
-                            {/* <span>Zakres cenowy</span>
-                            <input type="" placeholder="min"></input>
-                            <input type="" placeholder="max"></input>
-                            <button>Zastosuj</button> */}
                         </div>
                         <div className="right">
                             <span className="sortBy">Sortuj:</span>
@@ -60,10 +66,9 @@ function Home() {
                             )}
                         </div>
                     </div>
- 
                 </div>
                 <div className="bottom">
-                <div className="sidebar">
+                    <div className="sidebar">
                         <h3>Kategorie</h3>
                         <ul>
                             {categories.map((category, index) => (
@@ -73,22 +78,24 @@ function Home() {
                             ))}
                         </ul>
                     </div>
-                <div className="books">
-                    <div className="cards">
-                        {isLoading
-                        ? "loading"
-                        : error
-                        ? "Something went wrong"
-                        :data
-                            .filter((product) => !selectedCategory || product.category === selectedCategory)
-                            .map((product) => (
-                                <ProductCard key={product._id} item={product} />
-                            ))}
+                    <div className="books">
+                        <div className="cards">
+                            {isLoading
+                                ? "loading"
+                                : error
+                                ? "Something went wrong"
+                                : sortedData
+                                    .filter((product) => 
+                                        (!selectedCategory || product.category === selectedCategory) && // Filter by selected category
+                                        (searchQuery.trim() === "" || // Filter by search query (case insensitive)
+                                        (product.title && product.title.toLowerCase().includes(searchQuery.toLowerCase())) // Null check for product.title
+                                    ))
+                                    .map((product) => (
+                                        <ProductCard key={product._id} item={product} />
+                                    ))}
+                        </div>
                     </div>
                 </div>
-
-                </div>
-
             </div>
         </div>
     );

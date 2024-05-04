@@ -11,6 +11,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
+
 // import NavbarDefault from './components/navbar/NavbarDefault';
 
 const queryClient = new QueryClient(); // Create the QueryClient instance
