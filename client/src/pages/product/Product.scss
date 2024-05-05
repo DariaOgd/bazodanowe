@@ -1,0 +1,19 @@
+.product{
+    height: 100vh;
+
+}
+.containerProduct{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    img{
+        height: 30rem;
+    }
+    .right{
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+
+        
+    }
+}

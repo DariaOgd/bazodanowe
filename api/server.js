@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoute from "./routes/auth.route.js";
+import userRoute from "./routes/user.route.js"
 import cookieParser from "cookie-parser";
 import productRoute from "./routes/product.route.js"
 import { verifyToken } from "./middleware/jwt.js";
@@ -26,7 +27,7 @@ app.use(cookieParser());
 
 
 app.use("/api/auth", authRoute)
-
+app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 
 app.use((err, req, res, next) =>{
