@@ -32,14 +32,14 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
   return (
     <Navbar expand="lg" className="bg-body-tertiary" id="nav">
       <Container fluid>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           <img
             src="../minilogo.png"
             width="40"
             height="40"
             className="d-inline-block align-top"
             alt="Logo"
-            href="/"
+            //href="/"
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -52,7 +52,7 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
             <Form className="d-flex ms-4">
               <Form.Control
                 type="search"
-                placeholder="Szukaj"
+                placeholder="Search"
                 className="me-2"
                 aria-label="Szukaj"
                 value={searchInput} // Bind search input value to state
@@ -72,19 +72,19 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
                 {currentUser?.name}
               </button>
               <ul className={`dropdown-menu${dropdownOpen ? ' show' : ''} dropdown-menu-end`} aria-labelledby="dropdownMenuButton">
-                <li className="custom-dropdown-item"><a className="dropdown-item" href="/add">Dodaj produkt</a></li>
-                <li className="custom-dropdown-item"><a className="dropdown-item" href="#">Zamówienia</a></li>
+                <li className="custom-dropdown-item"><a className="dropdown-item" href="/add">Add a new product</a></li>
+                <li className="custom-dropdown-item"><a className="dropdown-item" href="#">Your orders</a></li>
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
                 <li className="custom-dropdown-item">
                   <Button variant="outline-danger" className="dropdown-item" onClick={handleLogout}>
-                    Wyloguj się
+                   Log out
                   </Button>
                 </li>
               </ul>
             </div>
           ) : (
             <Button variant="outline-success" href="/login">
-              Zaloguj się
+              Log in
             </Button>
           )}
         </Navbar.Collapse>

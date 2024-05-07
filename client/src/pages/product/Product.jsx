@@ -53,7 +53,7 @@ function Product() {
               
             </div>
         
-            {dataUser && <p className="username">User Name: {dataUser.name}</p>}
+            {dataUser && <p className="username">Seller: {dataUser.name}</p>}
             
             <h1>{data.title}</h1>
             <p className="state">State: {data.state}</p>
@@ -63,7 +63,7 @@ function Product() {
             
             <p className="desc">{data.desc}</p>
             <div className="price">
-              <h2>$ {data.price}</h2>
+              <h2>${data.price}</h2>
             </div>
             <div className="add-basket">
             <button >Add to cart</button>

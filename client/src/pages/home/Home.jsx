@@ -56,18 +56,18 @@ function Home() {
         <div>
             <NavbarDefault setSearchQuery={setSearchQuery} /> {/* Pass setSearchQuery prop */}
             <div className="container">
-                <h1 id="greeting">Witaj {currentUser?.name}!</h1>
+                <h1 id="greeting">Hello {currentUser?.name}!</h1>
                 <div className="top-section">
                     <div className="sort-section">
                         <div className="left"></div>
                         <div className="right">
-                            <span className="sortBy">Sortuj:</span>
-                            <span className="sortType">{sort === "newest" ? "Od najnowszych" : "Od najstarszych"}</span>
+                            <span className="sortBy">Sort by:</span>
+                            <span className="sortType">{sort === "newest" ? "Newest" : "Oldest"}</span>
                             <img src="../downarrow.png" alt="" onClick={() => setOpen(!open)} />
                             {open && (
                                 <div className="rightMenu">
-                                    <span onClick={() => reSort("newest")}>Najnowsze</span>
-                                    <span onClick={() => reSort("oldest")}>Najstarsze</span>
+                                    <span onClick={() => reSort("newest")}>Newest</span>
+                                    <span onClick={() => reSort("oldest")}>Oldest</span>
                                 </div>
                             )}
                         </div>
@@ -75,7 +75,7 @@ function Home() {
                 </div>
                 <div className="bottom">
                     <div className="sidebar">
-                        <h3>Kategorie</h3>
+                        <h3>Categories</h3>
                         <ul>
                             {categories.map((category, index) => (
                                 <li

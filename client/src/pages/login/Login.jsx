@@ -28,7 +28,7 @@ function Login() {
         <div className="form-group">
           
         </div>
-        <h1>Zaloguj się</h1>
+        <h1>Sign In</h1>
         <label htmlFor=""></label>
         <input
           name="Email"
@@ -40,13 +40,13 @@ function Login() {
         <label htmlFor=""></label>
         <input
           name="password"
-          placeholder="Hasło"
+          placeholder="Password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Zaloguj się</button>
+        <button type="submit">Sign In</button>
         {error && error}
-        <a href="/register">Nie masz konta?</a>
+        <a href="/register">Don't have an account?</a>
 
       </form>
     </div>
