@@ -46,3 +46,18 @@
     justify-content: space-between; /* Align items with space between them */
     align-items: baseline; /* Align items on their baselines */
 }
+
+
+.card {
+    width: 14rem;
+    /* Set a fixed height for the card */
+    height: 20rem;
+}
+
+.card .card-img-top {
+    /* Set a fixed height for the image */
+    height: 10rem; /* Adjust the height as needed */
+    object-fit: cover; /* Ensure the image covers the entire space */
+}
+
+/* Additional styles remain unchanged */

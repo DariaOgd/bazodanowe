@@ -132,8 +132,9 @@
     /* Books section styles */
     .books {
         .cards {
-            display: flex;
+            display: grid;
             gap: 30px;
+            grid-template-columns: 1fr 1fr 1fr;
         }
     }
 }

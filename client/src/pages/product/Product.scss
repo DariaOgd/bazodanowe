@@ -1,19 +1,44 @@
-.product{
-    height: 100vh;
 
-}
 .containerProduct{
+    padding: 2rem;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    .left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .category{
+            p{
+                color: rgb(144, 148, 157);
+                font-size: 11px;
+            }
+        }
+    }
     img{
-        height: 30rem;
+        height: 25rem;
     }
     .right{
         display: flex;
         flex-direction: column;
         padding: 2rem;
+        height: 100%;
+        h1{
+            font-weight: bold;
+
+        }
+
+        .usernam, .state, .category{
+            color: rgb(144, 148, 157);
+            font-size: 11px;
+        }
 
         
     }
+}
+
+.username{
+    color: rgb(144, 148, 157);
+            font-size: 11px;
 }

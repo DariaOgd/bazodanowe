@@ -39,21 +39,26 @@ function Product() {
       ) : (
         <div className="containerProduct">
           <div className="left">
-            <div className="category">          
-              <p>Category: {data.category}</p>
-            </div>
+            
             {data.images && data.images.length > 0 && (
               <img src={data.images[0]} alt="Product Image" />
             )}
           </div>
           <div className="right">
-            {dataUser && <p>User Name: {dataUser.name}</p>}
-            <p>State: {data.state}</p>
+        
+            {dataUser && <p className="username">User Name: {dataUser.name}</p>}
+            
             <h1>{data.title}</h1>
+            <p className="state">State: {data.state}</p>
+            <p className="category">{data.category}</p>
+                     
+              
+            
             <p>{data.desc}</p>
             <div className="price">
               <h2>$ {data.price}</h2>
             </div>
+            <button>Add to cart</button>
           </div>
         </div>
       )}
