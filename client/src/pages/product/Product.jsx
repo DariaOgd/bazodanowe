@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
+import NavbarDefault from "../../components/navbar/NavbarDefault";
+
 import "./Product.scss"
 function Product() {
   const { id } = useParams();
@@ -31,7 +33,9 @@ function Product() {
   
 
   return (
+    
     <div className="product">
+      <NavbarDefault></NavbarDefault>
       {isLoading || isLoadingUser ? (
         "Loading..."
       ) : error || errorUser ? (
@@ -45,6 +49,9 @@ function Product() {
             )}
           </div>
           <div className="right">
+            <div className="info">
+              
+            </div>
         
             {dataUser && <p className="username">User Name: {dataUser.name}</p>}
             
@@ -54,11 +61,15 @@ function Product() {
                      
               
             
-            <p>{data.desc}</p>
+            <p className="desc">{data.desc}</p>
             <div className="price">
               <h2>$ {data.price}</h2>
             </div>
-            <button>Add to cart</button>
+            <div className="add-basket">
+            <button >Add to cart</button>
+
+            </div>
+            
           </div>
         </div>
       )}
