@@ -83,7 +83,7 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
               </ul>
             </div>
           ) : (
-            <Button variant="outline-success" href="/login">
+            <Button variant="outline-success" id="loginbtn" href="/login">
               Log in
             </Button>
           )}

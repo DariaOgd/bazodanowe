@@ -36,7 +36,7 @@ const ProductSchema = new Schema(
     state: {
       type: String,
       required: true,
-      enum: ["nowy", "używany", "uszkodzony"],
+      enum: ["new", "used", "broken"],
     },
     createdAt: {
       type: Date,
