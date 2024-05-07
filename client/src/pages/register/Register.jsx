@@ -30,7 +30,7 @@ function Register() {
       setTimeout(() => {
         setShowSuccessMessage(false); 
         navigate("/login"); 
-      }, 2000); 
+      }, 1000); 
     } catch (err) {
       console.log(err);
     }
@@ -39,7 +39,7 @@ function Register() {
   return (
     <div className="register">
       <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
+        <h1 className='signup'>Sign Up</h1>
         <label htmlFor="email"></label>
         <input type="text" name="email" value={user.email} onChange={handleChange} placeholder='Email' />
         <label htmlFor="password"></label>

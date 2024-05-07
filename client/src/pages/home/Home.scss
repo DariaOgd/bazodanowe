@@ -189,3 +189,12 @@
 .selectedCategory {
     color: red; /* Ensure this is removed as it's already defined inside the .sidebar block */
 }
+.cards .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box-shadow on hover */
+}
+input[type="text"]:hover {
+    border-color: rgb(182, 8, 156); /* Change border color on hover */
+}
+*{
+    background-color: white;
+}

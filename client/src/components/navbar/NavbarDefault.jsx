@@ -7,6 +7,10 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import newRequest from "../../utils/newRequest";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+
 
 function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -60,7 +64,11 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
               />
               
             </Form>
+            
           </Nav>
+          <Nav.Link className="cart" href="/shopping-cart">
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </Nav.Link>
           {currentUser ? (
             <div className="dropdown ml-auto">
               <button
@@ -88,6 +96,8 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
             </Button>
           )}
         </Navbar.Collapse>
+
+       
       </Container>
     </Navbar>
   );

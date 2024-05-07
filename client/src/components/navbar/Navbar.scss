@@ -1,22 +1,42 @@
-.custom-dropdown-item {
-  margin-right: 2rem;
-  overflow-x: hidden; // Prevent horizontal scrolling in the dropdown menu
-}
-
-
-
-#nav{
+#nav {
   padding-left: 7rem;
   padding-right: 8rem;
-  background-color: white !important;
+  background-color: rgb(255, 255, 255) !important;
+
+  .navbar-collapse {
+    justify-content: flex-end; // Align items to the right
+  }
+
+  .navbar-nav .nav-link {
+    margin-left: 1rem; // Add space between the elements
+    color: rgb(182, 189, 208) !important;
+
+    &:hover {
+      color: #007bff !important; // Change color on hover
+    }
+  }
+
+  #loginbtn {
+    color: rgb(182, 189, 208) !important;
+    border: 1px solid rgb(211, 214, 219) !important;
+
+    &:hover {
+      background-color: #007bff !important;
+      color: white !important;
+    }
+  }
+
+  .custom-dropdown-item {
+    margin-right: 1rem;
+    overflow-x: hidden; // Prevent horizontal scrolling in the dropdown menu
+  }
 }
 
-#loginbtn{
-  color:rgb(104, 106, 112) !important;
-  border:1px solid rgb(211, 214, 219) !important;
-
-  &:hover{
-    background-color: #007bff !important;
-    color: white !important;
+.fa-shopping-cart {
+  margin-left: 2rem;
+  margin-right: 1rem; // Add space between the icon and other elements
 }
+.cart{
+  margin-right: 2rem;
+
 }

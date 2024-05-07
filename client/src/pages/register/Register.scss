@@ -1,3 +1,8 @@
+*{
+    font-family: sans-serif;
+    background-color: rgba(230, 243, 250, 0.151);
+}
+
 .register{
     height: 100vh;
     display: flex;
@@ -6,7 +11,7 @@
 
     form{
         border-radius: 10px;
-        background-color: lightgray;
+        background-color: rgba(250, 253, 255, 0.205);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -16,9 +21,9 @@
         height: 80%;
 
         input{
-            background-color: lightgray;
+            background-color: rgba(130, 203, 240, 0);
             border: none;
-            border-bottom: 1px solid black;
+            border-bottom: 1px dotted  rgb(157, 157, 200);
             padding: 10px;
             width: 60%;
         }
@@ -28,8 +33,14 @@
             border: none;
             padding: 12px;
             color: white;
-            background-color: black;
+            border-radius: 10px;
+            background-color: rgb(96, 101, 184);
             cursor: pointer;
+            transition: background-color 0.3s ease; /* Add a transition for the background color */
+        }
+
+        button:hover {
+            background-color: rgb(126, 133, 242); /* Change the background color on hover */
         }
         a{
             cursor: pointer;
@@ -39,4 +50,11 @@
             color: black;
         }
 }
+}
+
+.signup{
+    font-size: 30px;
+    text-transform: uppercase;
+    color: rgb(59, 59, 59);
+    font-weight: bold;
 }

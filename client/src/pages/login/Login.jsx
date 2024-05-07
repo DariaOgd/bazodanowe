@@ -28,7 +28,7 @@ function Login() {
         <div className="form-group">
           
         </div>
-        <h1>Sign In</h1>
+        <h1 className="signin">Sign In</h1>
         <label htmlFor=""></label>
         <input
           name="Email"
