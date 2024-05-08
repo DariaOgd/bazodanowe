@@ -24,7 +24,7 @@ export const register = async (req, res, next) => {
       if (!user) return next(createError(404, "User not found"));
   
       const isCorrect = bcrypt.compareSync(req.body.password, user.password);
-      if (!isCorrect) return next(createError(400, "Złe hasło lub e-mail"));
+      if (!isCorrect) return next(createError(400, "Wrong password or email"));
   
       const token = jwt.sign(
         {

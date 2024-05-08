@@ -16,7 +16,7 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [searchInput, setSearchInput] = useState(""); // State for search input
+  const [searchInput, setSearchInput] = useState(""); 
 
   const handleLogout = async () => {
     try {
@@ -29,8 +29,8 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
   };
 
   const handleSearch = (e) => {
-    setSearchInput(e.target.value); // Update search input state
-    setSearchQuery(e.target.value); // Pass search query to parent component
+    setSearchInput(e.target.value); 
+    setSearchQuery(e.target.value); 
   };
 
   return (
@@ -59,8 +59,8 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
                 placeholder="Search"
                 className="me-2"
                 aria-label="Szukaj"
-                value={searchInput} // Bind search input value to state
-                onChange={handleSearch} // Call handleSearch function on change
+                value={searchInput} 
+                onChange={handleSearch} 
               />
               
             </Form>

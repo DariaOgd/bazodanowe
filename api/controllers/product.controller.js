@@ -20,10 +20,10 @@ export const deleteProduct = async (req, res, next) => {
     try {
       const product = await Product.findById(req.params.id);
       if (product.userId !== req.userId)
-        return next(createError(403, "You can delete only your gig!"));
+        return next(createError(403, "You can delete only your product!"));
   
       await Product.findByIdAndDelete(req.params.id);
-      res.status(200).send("Gig has been deleted!");
+      res.status(200).send("Product has been deleted!");
     } catch (err) {
       next(err);
     }
