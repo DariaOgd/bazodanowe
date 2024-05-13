@@ -58,7 +58,6 @@ export const deleteProduct = async (req, res, next) => {
     }
   };
 
-
   export const updateProduct = async (req, res, next) => {
     const productId = req.params.id;  // Get the product ID from the request URL
   
@@ -68,8 +67,8 @@ export const deleteProduct = async (req, res, next) => {
         return next(createError(404, "Product not found!"));
       }
   
-      // Update product data with request body (excluding sensitive fields)
-      const allowedUpdates = ["title", "description", "price", "category", /* other allowed fields */];
+      // Update product data with request body (including photos and excluding sensitive fields)
+      const allowedUpdates = ["title", "description", "price", "category", "images", /* other allowed fields */];
       const updates = Object.keys(req.body).reduce((acc, key) => {
         if (allowedUpdates.includes(key)) {
           acc[key] = req.body[key];
@@ -77,11 +76,20 @@ export const deleteProduct = async (req, res, next) => {
         return acc;
       }, {});
   
+      // If photos are included in the request, handle them separately
+      if (req.files && req.files.length > 0) {
+        // Handle photo updates here, similar to how you handle photo uploads in the createProduct function
+        // Once the photos are uploaded, update the product's images array with the new photo URLs
+        // For simplicity, I'm assuming you're using the same logic for photo uploads as in createProduct
+        const uploadedImages = req.files.map((file) => file.path); // Adjust this based on your file upload logic
+        updates.images = [...product.images, ...uploadedImages];
+      }
+  
       const updatedProduct = await Product.findByIdAndUpdate(productId, updates, { new: true });  // Update and return new product
       res.status(200).json(updatedProduct);
     } catch (err) {
       next(err);
     }
-  };
-  
+};
+
 

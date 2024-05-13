@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
+import upload from "../../utils/upload"; // Import your upload function
 import "./Edit.scss";
 
 const Edit = () => {
@@ -37,6 +38,21 @@ const Edit = () => {
       ...product,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleUpload = async (e) => {
+    setUploading(true);
+    const files = e.target.files;
+    const images = [];
+    for (const file of files) {
+      const url = await upload(file); // Upload each file using the upload function
+      images.push(url);
+    }
+    setProduct({
+      ...product,
+      images: images,
+    });
+    setUploading(false);
   };
 
   const handleSubmit = async (e) => {
@@ -91,6 +107,19 @@ const Edit = () => {
                   </option>
                 ))}
               </select>
+              <div className="images">
+                <div className="imagesInputs">
+                  <label htmlFor="file">Upload Images</label>
+                  <input
+                    type="file"
+                    multiple
+                    onChange={handleUpload}
+                  />
+                </div>
+                <button>
+                  {uploading ? "Uploading..." : "Upload"}
+                </button>
+              </div>
               <label htmlFor="desc">Description</label>
               <textarea
                 name="desc"
