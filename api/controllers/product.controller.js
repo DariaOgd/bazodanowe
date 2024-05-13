@@ -57,3 +57,31 @@ export const deleteProduct = async (req, res, next) => {
       next(err);
     }
   };
+
+
+  export const updateProduct = async (req, res, next) => {
+    const productId = req.params.id;  // Get the product ID from the request URL
+  
+    try {
+      const product = await Product.findById(productId);
+      if (!product) {
+        return next(createError(404, "Product not found!"));
+      }
+  
+      // Update product data with request body (excluding sensitive fields)
+      const allowedUpdates = ["title", "description", "price", "category", /* other allowed fields */];
+      const updates = Object.keys(req.body).reduce((acc, key) => {
+        if (allowedUpdates.includes(key)) {
+          acc[key] = req.body[key];
+        }
+        return acc;
+      }, {});
+  
+      const updatedProduct = await Product.findByIdAndUpdate(productId, updates, { new: true });  // Update and return new product
+      res.status(200).json(updatedProduct);
+    } catch (err) {
+      next(err);
+    }
+  };
+  
+

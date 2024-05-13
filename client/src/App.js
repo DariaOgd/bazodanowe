@@ -12,6 +12,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
  import Product  from './pages/product/Product';
+import Edit from './pages/edit/Edit';
 // import NavbarDefault from './components/navbar/NavbarDefault';
 
 const queryClient = new QueryClient(); // Create the QueryClient instance
@@ -30,6 +31,8 @@ function App() {
             <Route path="/register" element={<Register />} />  
             <Route path="/add" element={<Add />} /> 
             <Route path="/product/:id" element={<Product />} /> 
+            <Route path="/edit/:id" element={<Edit />} /> 
+
             {/* Your existing Login component */}
 
 {/* Your existing Login component */}
