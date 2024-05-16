@@ -1,0 +1,67 @@
+.slideCard {
+    width: 10rem;
+    height: 17rem; 
+    border: 1px solid #dadada;
+    border-radius: 5px;
+}
+
+.slideCard a {
+    color: inherit; 
+    text-decoration: none; 
+  }
+
+.slideCard .user {
+    text-decoration: none !important;
+}
+
+
+
+.slideCard .card-title,
+.slideCard .card-text {
+    text-decoration: none !important;
+}
+
+.card-title {
+    margin-top: 0.5rem;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    
+    //font-weight: bold;
+}
+
+.link {
+    text-decoration: none !important;
+    
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.card-footer button {
+    font-size:12px;
+    width:89px;
+    margin-right: 3px;
+}
+
+.card-footer p {
+    font-size: 14px;
+    text-align: center;
+    margin-left: 0.5rem;
+   // font-weight: bolder;
+}
+
+.card-footer button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.slideCard .card-img-top {
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 5px;
+}
+

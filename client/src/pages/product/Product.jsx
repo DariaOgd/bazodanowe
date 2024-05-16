@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import "./Product.scss";
+import Slide from "../../components/navbar/Slide.jsx";
 
 function Product() {
   const { id } = useParams();
@@ -124,6 +125,13 @@ function Product() {
           </Alert>
         </Stack>
       )}
+     <div className="product-slider">
+      <span id="slider-heading">You may also like:</span>
+      <div className="slider">
+        <Slide currentProductId={id}/>
+      </div>
+    </div>
+
     </div>
   );
 }
