@@ -91,10 +91,11 @@ function Product() {
                 <FontAwesomeIcon
                   id="trash-icon"
                   icon={faTrash}
+                  title="Delete this product"
                   onClick={handleDeleteProduct}
                 />
                 <Link to={`/edit/${id}`}>
-                  <FontAwesomeIcon id="edit-icon"icon={faEdit} />
+                  <FontAwesomeIcon id="edit-icon" title="Edit Product" icon={faEdit} />
                 </Link>
               </div>
             )}

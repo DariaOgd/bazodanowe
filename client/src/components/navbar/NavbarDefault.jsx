@@ -84,7 +84,7 @@ function NavbarDefault({ setSearchQuery }) { // Receive setSearchQuery as prop
                 <li className="custom-dropdown-item"><a className="dropdown-item" href="#">Your orders</a></li>
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
                 <li className="custom-dropdown-item">
-                  <Button variant="outline-danger" className="dropdown-item" onClick={handleLogout}>
+                  <Button variant="outline-danger" className="dropdown-item" id="logout-button" onClick={handleLogout}>
                    Log out
                   </Button>
                 </li>

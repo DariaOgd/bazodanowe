@@ -5,6 +5,7 @@ import newRequest from "../../utils/newRequest";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
 import upload from "../../utils/upload"; // Import your upload function
 import "./Edit.scss";
+import Footer from "../../components/Footer";
 
 const Edit = () => {
   const { id } = useParams();
@@ -152,6 +153,7 @@ const Edit = () => {
           </div>
         </form>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
