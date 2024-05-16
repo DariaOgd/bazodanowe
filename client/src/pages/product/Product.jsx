@@ -9,6 +9,7 @@ import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import "./Product.scss";
 import Slide from "../../components/navbar/Slide.jsx";
+import Footer from "../../components/Footer.jsx";
 
 function Product() {
   const { id } = useParams();
@@ -131,7 +132,7 @@ function Product() {
         <Slide currentProductId={id}/>
       </div>
     </div>
-
+    <Footer></Footer>
     </div>
   );
 }
