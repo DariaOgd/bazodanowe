@@ -89,11 +89,12 @@ function Product() {
             {ifuserSeller && (
               <div className="icons">
                 <FontAwesomeIcon
+                  id="trash-icon"
                   icon={faTrash}
                   onClick={handleDeleteProduct}
                 />
                 <Link to={`/edit/${id}`}>
-                  <FontAwesomeIcon icon={faEdit} />
+                  <FontAwesomeIcon id="edit-icon"icon={faEdit} />
                 </Link>
               </div>
             )}

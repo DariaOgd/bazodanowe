@@ -34,8 +34,7 @@
             color: rgb(144, 148, 157);
             font-size: 11px;
         }
-
-        
+    
     }
 }
 
@@ -83,4 +82,15 @@
 }
 .product-slider{
     margin-top: 60px;
+}
+#trash-icon{
+    position:absolute;
+    right:6.5rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+#edit-icon{
+    position:absolute;
+    right:8rem;
 }
