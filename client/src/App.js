@@ -6,6 +6,7 @@ import Register from './pages/register/Register';
 import Home from './pages/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Add from "./pages/add/Add"
+import UserProfile from './pages/userProfile/userProfile';
 import {
   QueryClient,
   QueryClientProvider,
@@ -13,7 +14,6 @@ import {
 } from "@tanstack/react-query";
  import Product  from './pages/product/Product';
 import Edit from './pages/edit/Edit';
-// import NavbarDefault from './components/navbar/NavbarDefault';
 
 const queryClient = new QueryClient(); // Create the QueryClient instance
 
@@ -30,8 +30,17 @@ function App() {
             <Route path="/login" element={<Login />} />  
             <Route path="/register" element={<Register />} />  
             <Route path="/add" element={<Add />} /> 
-            <Route path="/product/:id" element={<Product />} /> 
-            <Route path="/edit/:id" element={<Edit />} /> 
+            <Route path="/product/:id" element={<Product />} />
+            
+
+ 
+            <Route path="/edit/:id" element={<Edit />} />
+            <Route path="/profile/:id" element={<UserProfile />} />
+
+
+
+  
+            
 
             {/* Your existing Login component */}
 

@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import createError from "../utils/createError.js";
-
+import Product from "../models/product.model.js";
 
 
 export const deleteUser = async (req,res, next) =>{
@@ -17,3 +17,4 @@ export const getUser = async (req, res, next) => {
   
     res.status(200).send(user);
   };
+
