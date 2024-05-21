@@ -72,9 +72,7 @@ function NavbarDefault({ setSearchQuery }) {
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
                 <li className="custom-dropdown-item">
 
-                  <Button variant="outline-danger" className="dropdown-item" onClick={handleLogout}>
-                    Log out
-                  </Button>
+                
                   <Button variant="outline-danger" className="dropdown-item" id="logout-button" onClick={handleLogout}>
                    Log out
 

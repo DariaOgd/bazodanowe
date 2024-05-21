@@ -117,8 +117,8 @@ function Product() {
 
             <div className="info"></div>
 
-            <p className="username">Seller: 
-                  <Link to={`/profile/${data.userId}`}>{dataUser?.name || 'Seller'}</Link>
+            <p className="username">Seller:  
+                  <Link id="seller-link" title="Visit user's profile" to={`/profile/${data.userId}`}>{dataUser?.name || 'Seller'}</Link>
                 </p>
 
 

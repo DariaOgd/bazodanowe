@@ -1,0 +1,33 @@
+.products-list{
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            padding-left: 1rem;
+            margin-left: 12rem;
+            margin-right: 12rem;
+            padding-right: 1rem;
+}
+
+#user-icon{
+    width:70px;
+     height:70px;
+     margin-bottom: 1rem;
+     border: 2px solid rgb(172, 171, 171);
+     border-radius: 50px;
+     
+}
+
+.profile-details{
+    margin:4rem;
+    text-align: center;
+    p{
+        color:rgb(172, 171, 171);
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+    h2{
+        font-weight: bold;
+        font-size: 35px;
+        margin-bottom: 0.5rem;
+    }
+}

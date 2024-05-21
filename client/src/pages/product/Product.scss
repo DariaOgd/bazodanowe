@@ -101,3 +101,13 @@
     }
 
 }
+#seller-link{
+    text-decoration: none !important;
+   // font-weight: bold;
+    color:rgb(144, 148, 157);
+    &:hover{
+        cursor: pointer;
+        color:#007bff;
+        font-weight: bold;
+    }
+}
