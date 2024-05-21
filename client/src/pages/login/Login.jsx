@@ -46,7 +46,7 @@ function Login() {
         />
         <button type="submit">Sign In</button>
         {error && error}
-        <a href="/register">Don't have an account?</a>
+        <a id="redirect-link"href="/register">Don't have an account?</a>
 
       </form>
     </div>

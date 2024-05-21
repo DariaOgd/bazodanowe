@@ -34,8 +34,7 @@
             color: rgb(144, 148, 157);
             font-size: 11px;
         }
-
-        
+    
     }
 }
 
@@ -72,4 +71,26 @@
             color: white;
         }
     }
+}
+#slider-heading{
+    font-size: 16px;
+    padding-left: 16%;
+    margin-bottom: 25px;
+    //margin-top: 40px;
+    color:rgb(144, 148, 157);
+   
+}
+.product-slider{
+    margin-top: 60px;
+}
+#trash-icon{
+    position:absolute;
+    right:6.5rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+#edit-icon{
+    position:absolute;
+    right:8rem;
 }

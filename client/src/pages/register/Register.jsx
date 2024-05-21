@@ -49,7 +49,7 @@ function Register() {
         {/* <label htmlFor="address"></label>
         <input type="text" name="address" value={user.address} onChange={handleChange} placeholder='Adres' /> */}
         <button type="submit">Sign Up</button>
-        <a href="/login">Already have an account?</a>
+        <a id="redirect-link" href="/login">Already have an account?</a>
       </form>
       {showSuccessMessage && (
         // Display alert using browser's built-in alert function

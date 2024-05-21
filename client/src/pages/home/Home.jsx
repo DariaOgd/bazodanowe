@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ProductCard from "../../components/navbar/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest.js";
+import Footer from "../../components/Footer.jsx";
 
 function Home() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -107,6 +108,7 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

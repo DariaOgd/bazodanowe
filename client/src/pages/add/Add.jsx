@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 import "./Add.scss";
+import Footer from "../../components/Footer";
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
   const [files, setFiles] = useState([]);
@@ -122,7 +123,7 @@ const Add = () => {
         </div>
       </div>
     </div>
-
+    <Footer></Footer>
     </div>
     
     
