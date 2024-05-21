@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
 import ProductCard from "../../components/navbar/ProductCard";
+import "./userProfile.scss";
+import Footer from "../../components/Footer.jsx";
 
 function UserProfile() {
   const { id } = useParams();
@@ -42,16 +44,16 @@ function UserProfile() {
     <div className="user-profile">
       <NavbarDefault />
       <div className="profile-container">
-        <h1>User Profile</h1>
         {user && (
           <div className="profile-details">
+            <img src="../user-icon.png" id="user-icon" alt="Logo" />
             <h2>{user.name}</h2>
             <p>Email: {user.email}</p>
             <p>Joined: {new Date(user.createdAt).toLocaleDateString()}</p>
           </div>
         )}
         <div className="user-products">
-          <h2>{user ? `${user.name}'s` : "User's"} Products:</h2>
+          
           <div className="products-list">
             {products.length > 0 ? (
               products.map(product => <ProductCard key={product._id} item={product} />)
@@ -61,6 +63,7 @@ function UserProfile() {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }

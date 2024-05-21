@@ -71,13 +71,11 @@ function NavbarDefault({ setSearchQuery }) {
                 <li className="custom-dropdown-item"><Link className="dropdown-item" to={`/profile/${currentUser._id}`}>Your profile</Link></li>
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
                 <li className="custom-dropdown-item">
-<<<<<<< HEAD
-                  <Button variant="outline-danger" className="dropdown-item" onClick={handleLogout}>
-                    Log out
-=======
+
+                
                   <Button variant="outline-danger" className="dropdown-item" id="logout-button" onClick={handleLogout}>
                    Log out
->>>>>>> 1381bcddec1b4a48c867a151fb7c39dd926bf818
+
                   </Button>
                 </li>
               </ul>

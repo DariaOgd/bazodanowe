@@ -2,6 +2,10 @@
     width: 14rem;
     height: rem;
 }
+.link{
+    width: 14rem;
+    height: rem;
+}
 
 .card .user {
     text-decoration: none;
@@ -36,6 +40,7 @@
     p{
         font-size: 18px;
         font-weight: bolder;
+        background-color: #F8F8F8;
     }
     button:hover {
         background-color: #007bff; /* Change background color on hover */

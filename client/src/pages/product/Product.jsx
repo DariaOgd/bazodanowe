@@ -11,6 +11,10 @@ import "./Product.scss";
 import axios from 'axios';
 import Slide from "../../components/navbar/Slide.jsx";
 import Footer from "../../components/Footer.jsx";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6639661f1122fd375b962a322465e5e074385d66
 
 function Product() {
   const { id } = useParams();
@@ -116,8 +120,8 @@ function Product() {
 
             <div className="info"></div>
 
-            <p className="username">Seller: 
-                  <Link to={`/profile/${data.userId}`}>{dataUser?.name || 'Seller'}</Link>
+            <p className="username">Seller:  
+                  <Link id="seller-link" title="Visit user's profile" to={`/profile/${data.userId}`}>{dataUser?.name || 'Seller'}</Link>
                 </p>
 
 
@@ -135,7 +139,23 @@ function Product() {
           </div>
         </div>
       )}
+<<<<<<< HEAD
 
+=======
+      {/* {showAlert && (
+        <Stack >
+          <Alert
+            severity="success"
+            onClose={() => setShowAlert(false)}
+          >
+            Product has been deleted successfully.
+          </Alert>
+        </Stack>
+
+      )} */}
+
+      
+>>>>>>> 6639661f1122fd375b962a322465e5e074385d66
      <div className="product-slider">
       <span id="slider-heading">You may also like:</span>
       <div className="slider">
@@ -143,6 +163,10 @@ function Product() {
       </div>
     </div>
     <Footer></Footer>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6639661f1122fd375b962a322465e5e074385d66
     </div>
   );
 }
