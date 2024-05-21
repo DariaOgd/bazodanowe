@@ -8,12 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import "./Product.scss";
-<<<<<<< HEAD
 import axios from 'axios';
-=======
 import Slide from "../../components/navbar/Slide.jsx";
 import Footer from "../../components/Footer.jsx";
->>>>>>> 1381bcddec1b4a48c867a151fb7c39dd926bf818
 
 function Product() {
   const { id } = useParams();
@@ -138,19 +135,7 @@ function Product() {
           </div>
         </div>
       )}
-      {/* {showAlert && (
-        <Stack >
-          <Alert
-            severity="success"
-            onClose={() => setShowAlert(false)}
-          >
-            Product has been deleted successfully.
-          </Alert>
-        </Stack>
-<<<<<<< HEAD
-      )} */}
-=======
-      )}
+
      <div className="product-slider">
       <span id="slider-heading">You may also like:</span>
       <div className="slider">
@@ -158,7 +143,6 @@ function Product() {
       </div>
     </div>
     <Footer></Footer>
->>>>>>> 1381bcddec1b4a48c867a151fb7c39dd926bf818
     </div>
   );
 }
