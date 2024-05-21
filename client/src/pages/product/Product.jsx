@@ -8,7 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import "./Product.scss";
+<<<<<<< HEAD
 import axios from 'axios';
+=======
+import Slide from "../../components/navbar/Slide.jsx";
+import Footer from "../../components/Footer.jsx";
+>>>>>>> 1381bcddec1b4a48c867a151fb7c39dd926bf818
 
 function Product() {
   const { id } = useParams();
@@ -101,11 +106,13 @@ function Product() {
             {ifuserSeller && (
               <div className="icons">
                 <FontAwesomeIcon
+                  id="trash-icon"
                   icon={faTrash}
+                  title="Delete this product"
                   onClick={handleDeleteProduct}
                 />
                 <Link to={`/edit/${id}`}>
-                  <FontAwesomeIcon icon={faEdit} />
+                  <FontAwesomeIcon id="edit-icon" title="Edit Product" icon={faEdit} />
                 </Link>
               </div>
             )}
@@ -140,7 +147,18 @@ function Product() {
             Product has been deleted successfully.
           </Alert>
         </Stack>
+<<<<<<< HEAD
       )} */}
+=======
+      )}
+     <div className="product-slider">
+      <span id="slider-heading">You may also like:</span>
+      <div className="slider">
+        <Slide currentProductId={id}/>
+      </div>
+    </div>
+    <Footer></Footer>
+>>>>>>> 1381bcddec1b4a48c867a151fb7c39dd926bf818
     </div>
   );
 }
