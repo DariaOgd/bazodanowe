@@ -88,9 +88,16 @@
     right:6.5rem;
     &:hover{
         cursor: pointer;
+        color:red;
     }
 }
 #edit-icon{
     position:absolute;
     right:8rem;
+    color:black;
+    &:hover{
+        cursor: pointer;
+        color:#007bff;
+    }
+
 }
