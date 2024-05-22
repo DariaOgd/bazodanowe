@@ -103,6 +103,72 @@ SOFTWARE.
   - **reducers**: Zawiera reduktory stanu aplikacji.
   - **utils**: Zawiera pomocnicze funkcje lub moduły.
 
+
+### Instrukcje uruchomienia
+
+### Wymagania wstępne
+
+Upewnij się, że masz zainstalowane następujące oprogramowanie:
+- [Node.js](https://nodejs.org/) (zalecana wersja LTS)
+- [MongoDB](https://www.mongodb.com/try/download/community) (lokalnie lub jako usługa chmurowa, np. MongoDB Atlas)
+- [Git](https://git-scm.com/)
+
+### Klonowanie repozytorium
+
+Sklonuj repozytorium projektu:
+```bash
+git clone https://github.com/username/paperback-paradise.git
+cd paperback-paradise
+ Backend
+Przejdź do katalogu api:
+
+bash
+Skopiuj kod
+cd api
+Zainstaluj zależności:
+
+bash
+Skopiuj kod
+npm install
+Frontend
+Przejdź do katalogu client:
+
+bash
+Skopiuj kod
+cd ../client
+Zainstaluj zależności:
+
+bash
+Skopiuj kod
+npm install
+Konfiguracja środowiska
+Backend
+W katalogu api utwórz plik .env i skonfiguruj zmienne środowiskowe:
+
+plaintext
+Skopiuj kod
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+Frontend
+W katalogu client utwórz plik .env i skonfiguruj zmienne środowiskowe:
+
+plaintext
+Skopiuj kod
+REACT_APP_API_URL=http://localhost:5000/api
+Uruchamianie aplikacji
+Backend
+W katalogu api uruchom serwer:
+
+bash
+Skopiuj kod
+npm start
+Frontend
+W katalogu client uruchom aplikację:
+
+bash
+Skopiuj kod
+npm start 
 ## 5. Testy
 
 ### Scenariusze Testowe dla Rejestracji i Logowania Użytkownika
@@ -123,7 +189,7 @@ Test sprawdza, czy system prawidłowo reaguje na próbę logowania z niepoprawny
 3. Wprowadź niepoprawne hasło w polu "Password".
 4. Kliknij przycisk "Login".
 
-**Oczekiwany wynik*:
+*Oczekiwany wynik*:
 - Wyświetla się komunikat "Wrong password or email".
 
 ---
