@@ -1,3 +1,4 @@
+// src/components/navbar/NavbarDefault.js
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
@@ -53,7 +54,7 @@ function NavbarDefault({ setSearchQuery }) {
               />
             </Form>
           </Nav>
-          <Nav.Link className="cart" as={Link} to="/shopping-cart">
+          <Nav.Link className="cart" as={Link} to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Nav.Link>
           <Nav.Link className="messages" as={Link} to="/messages">
@@ -75,11 +76,8 @@ function NavbarDefault({ setSearchQuery }) {
                 <li className="custom-dropdown-item"><Link className="dropdown-item" to={`/profile/${currentUser._id}`}>Your profile</Link></li>
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
                 <li className="custom-dropdown-item">
-
-                
                   <Button variant="outline-danger" className="dropdown-item" id="logout-button" onClick={handleLogout}>
-                   Log out
-
+                    Log out
                   </Button>
                 </li>
               </ul>

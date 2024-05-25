@@ -8,18 +8,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import "./Product.scss";
-import axios from 'axios';
+import { useCart } from "../../context/cartContext";
 import Slide from "../../components/navbar/Slide.jsx";
 import Footer from "../../components/Footer.jsx";
-
 
 function Product() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [showAlert, setShowAlert] = useState(false);
-  // const [cart, setCart] = useState([]);
-
+  const { addToCart } = useCart(); // Use the addToCart hook
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -75,16 +73,15 @@ function Product() {
     }
   };
 
-  // const handleAddToCart = async () => {
-  //   try {
-  //     console.log('Product ID:', id); // Check if the product ID is correctly obtained
-  //     await axios.post(`/cart/${id}`);
-  //     console.log('Product added to cart successfully!');
-  //   } catch (error) {
-  //     console.error('Error adding product to cart:', error);
-  //   }
-  // };
-  
+  const handleAddToCart = async () => {
+    try {
+      await addToCart(id);
+      window.location.reload()
+      console.log('Product added to cart successfully!');
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+    }
+  };
 
   return (
     <div className="product">
@@ -118,9 +115,8 @@ function Product() {
             <div className="info"></div>
 
             <p className="username">Seller:  
-                  <Link id="seller-link" title="Visit user's profile" to={`/profile/${data.userId}`}>{dataUser?.name || 'Seller'}</Link>
-                </p>
-
+              <Link id="seller-link" title="Visit user's profile" to={`/profile/${data.userId}`}>{dataUser?.name || 'Seller'}</Link>
+            </p>
 
             <h1>{data.title}</h1>
             <p className="state">State: {data.state}</p>
@@ -131,13 +127,13 @@ function Product() {
               <h2>${data.price}</h2>
             </div>
             <div className="add-basket">
-              <button >Add to cart</button>
+              <button onClick={handleAddToCart}>Add to cart</button>
             </div>
           </div>
         </div>
       )}
 
-      {/* {showAlert && (
+      {showAlert && (
         <Stack >
           <Alert
             severity="success"
@@ -146,18 +142,15 @@ function Product() {
             Product has been deleted successfully.
           </Alert>
         </Stack>
+      )}
 
-      )} */}
-
-      
-
-     <div className="product-slider">
-      <span id="slider-heading">You may also like:</span>
-      <div className="slider">
-        <Slide currentProductId={id}/>
+      <div className="product-slider">
+        <span id="slider-heading">You may also like:</span>
+        <div className="slider">
+          <Slide currentProductId={id} />
+        </div>
       </div>
-    </div>
-    <Footer></Footer>
+      <Footer />
     </div>
   );
 }
