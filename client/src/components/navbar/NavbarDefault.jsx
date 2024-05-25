@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import newRequest from "../../utils/newRequest"; // Make sure the path to your request utility is correct
 
 import "./Navbar.scss"; // Ensure your SCSS or CSS path is correct
@@ -54,6 +55,9 @@ function NavbarDefault({ setSearchQuery }) {
           </Nav>
           <Nav.Link className="cart" as={Link} to="/shopping-cart">
             <FontAwesomeIcon icon={faShoppingCart} />
+          </Nav.Link>
+          <Nav.Link className="messages" as={Link} to="/messages">
+            <FontAwesomeIcon icon={faMessage} />
           </Nav.Link>
           {currentUser ? (
             <div className="dropdown ml-auto">

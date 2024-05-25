@@ -34,7 +34,7 @@
 
 .fa-shopping-cart {
   margin-left: 2rem;
-  margin-right: 1rem; // Add space between the icon and other elements
+  //margin-right: 0.05rem; // Add space between the icon and other elements
 }
 .cart{
   margin-right: 2rem;
@@ -46,4 +46,11 @@
   margin-right: 5px;
   //width:12rem;
   
+}
+.cart{
+  margin-right:1.5rem;
+}
+.messages{
+  //margin-left: 0.05rem;
+  margin-right: 1.5rem;
 }

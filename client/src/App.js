@@ -14,6 +14,9 @@ import {
 } from "@tanstack/react-query";
  import Product  from './pages/product/Product';
 import Edit from './pages/edit/Edit';
+import Messages from './pages/messages/Messages';
+import Footer from './components/Footer';
+import Chat from './pages/chat/Chat';
 
 const queryClient = new QueryClient(); // Create the QueryClient instance
 
@@ -37,8 +40,8 @@ function App() {
             <Route path="/edit/:id" element={<Edit />} />
             <Route path="/profile/:id" element={<UserProfile />} />
 
-
-
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/chat/123" element={<Chat/>} />
   
             
 
@@ -46,7 +49,9 @@ function App() {
 
 {/* Your existing Login component */}
           </Routes>
+          
         </BrowserRouter>
+
       </QueryClientProvider>
     </div>
     </>

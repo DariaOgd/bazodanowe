@@ -19,6 +19,7 @@
 
 .profile-details{
     margin:4rem;
+    margin-bottom: 1rem;
     text-align: center;
     p{
         color:rgb(172, 171, 171);
@@ -29,5 +30,21 @@
         font-weight: bold;
         font-size: 35px;
         margin-bottom: 0.5rem;
+    }
+}
+
+.message-user{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    button{
+        margin-bottom: 4rem;
+        border-radius: 8px;
+        border: none;
+        background-color:#007bff;
+        color:white;
+        padding:9px;
+        width:90px;
     }
 }

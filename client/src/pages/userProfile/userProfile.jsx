@@ -45,13 +45,16 @@ function UserProfile() {
       <NavbarDefault />
       <div className="profile-container">
         {user && (
-          <div className="profile-details">
-            <img src="../user-icon.png" id="user-icon" alt="Logo" />
+          <div className="profile-details"> 
+            <img src="../user-icon.png" id="user-icon" alt="userIcon"/>
             <h2>{user.name}</h2>
             <p>Email: {user.email}</p>
             <p>Joined: {new Date(user.createdAt).toLocaleDateString()}</p>
           </div>
         )}
+        <div className="message-user">
+          <button>Message</button>
+        </div>
         <div className="user-products">
           
           <div className="products-list">
