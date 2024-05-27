@@ -36,7 +36,7 @@ function App() {
               <Route path="/edit/:id" element={<Edit />} />
               <Route path="/profile/:id" element={<UserProfile />} />
               <Route path="/messages" element={<Messages />} />
-              <Route path="/chat/123" element={<Chat />} />
+              <Route path="/chat/:id" element={<Chat />} />
               <Route path="/cart" element={<Cart />} /> {/* Add the cart route */}
             </Routes>
           </BrowserRouter>

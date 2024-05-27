@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
 import ProductCard from "../../components/navbar/ProductCard";
 import "./userProfile.scss";
 import Footer from "../../components/Footer.jsx";
+import { useQuery } from "@tanstack/react-query";
+
 
 function UserProfile() {
   const { id } = useParams();
@@ -12,6 +14,7 @@ function UserProfile() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -37,6 +40,46 @@ function UserProfile() {
     setLoading(false);
   }, [id]);
 
+  const navigate = useNavigate();
+  const { isLoading, data } = useQuery({
+    queryKey: ["orders"],
+    queryFn: () =>
+      newRequest.get(`/orders`).then((res) => {
+        return res.data;
+      }),
+  });
+
+  const handleContact = async () => {
+
+    if (!user) {
+      setError("User data is missing");
+      return;
+    }
+
+    const sellerId = user._id;
+    const buyerId = currentUser._id;
+    const conversationId = sellerId + buyerId;
+
+    try {
+      const res = await newRequest.get(`/conversations/single/${conversationId}`);
+      navigate(`/chat/${res.data.id}`);
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        try {
+          const res = await newRequest.post(`/conversations/`, {
+            to: currentUser.seller ? buyerId : sellerId,
+          });
+          navigate(`/chat/${res.data.id}`);
+        } catch (postErr) {
+          setError("Error starting new conversation: " + postErr.message);
+        }
+      } else {
+        setError("Error fetching conversation: " + err.message);
+      }
+    }
+  };
+
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -53,7 +96,7 @@ function UserProfile() {
           </div>
         )}
         <div className="message-user">
-          <button>Message</button>
+          <button onClick={handleContact}>Message</button>
         </div>
         <div className="user-products">
           

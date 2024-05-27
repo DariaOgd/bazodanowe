@@ -1,85 +1,80 @@
-import React from 'react'
-import {Link} from "react-router-dom";
+import React from 'react';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
 import Footer from "../../components/Footer";
 import './Messages.scss';
+import moment from "moment";
 
+const Messages = () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    const Messages = () => {
-        
-    
-    const message = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-  maxime cum corporis esse aspernatur laborum dolorum? Animi
-  molestias aliquam, cum nesciunt, aut, ut quam vitae saepe repellat
-  nobis praesentium placeat.`;
+  const queryClient = useQueryClient();
 
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["conversations"],
+    queryFn: () =>
+      newRequest.get(`/conversations`).then((res) => {
+        return res.data;
+      }),
+  });
 
+  const mutation = useMutation({
+    mutationFn: (id) => {
+      return newRequest.put(`/conversations/${id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["conversations"]);
+    },
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
-       <NavbarDefault></NavbarDefault>
-       <div className="container">
+      <NavbarDefault />
+      <div className="container">
         <div className="title">
           <h1>Messages</h1>
         </div>
         <table>
-          <tr>
-            <th>User</th>
-            <th>Last Message</th>
-            <th>Date</th>
-          </tr>
-          <tr className="active">
-            <td>
-                <Link className="link" to="/">
-                    Paweł Nowak
-                </Link>
-            </td>
-            <td>
-              <Link to="/chat/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>1 hour ago</td>
-          </tr>
-          <tr className="active">
-            <td> <Link className="link" to="/">
-                    Michał Kowalski
-                </Link></td>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Last Message</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((c) => {
+              // Ustal, który użytkownik jest inny
+              const otherUserId = c.sellerId === currentUser._id ? c.buyerId : c.sellerId;
+              const otherUserName = c.sellerId === currentUser._id ? c.buyerName : c.sellerName;
 
-            <td>
-              <Link to="/chat/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>2 hours ago</td>
-          </tr>
-          <tr>
-            <td> <Link className="link" to="/">
-                    Marzena Paweł
-                </Link></td>
-            <td>
-              <Link to="/chat/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>1 day ago</td>
-          </tr>
-          <tr>
-            <td> <Link className="link" to="/">
-                    Bartek Qwert
-                </Link> </td>
-            <td>
-              <Link to="/chat/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>2 days ago</td>
-          </tr>
+              return (
+                <tr className="active" key={c.id}>
+                  <td>
+                    <Link className="link" to={`/profile/${ c.buyerId === currentUser._id ? c.sellerId : c.buyerId}`}>
+                      { c.buyerId === currentUser._id ? c.sellerId : c.buyerId}
+                    </Link>
+                  </td>
+                  <td>
+                    <Link to={`/chat/${c.id}`} className="link">
+                    {c.lastMessage ? c.lastMessage.substring(0, 100) : "No messages yet..."}
+                    </Link>
+                  </td>
+                  <td>{moment(c.updatedAt).fromNow()}</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
-  )
+  );
+}
 
-    }
-export default Messages
+export default Messages;

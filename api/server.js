@@ -8,6 +8,8 @@ import productRoute from "./routes/product.route.js"
 import cartRoute from "./routes/cart.route.js"
 import orderRoute from "./routes/order.route.js"
 import { verifyToken } from "./middleware/jwt.js";
+import messageRoute from './routes/message.route.js';
+import conversationRoute from './routes/conversation.route.js';
 import cors from "cors"
 const app = express();
 dotenv.config();
@@ -33,6 +35,8 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use('/api/cart', cartRoute); // Use cart route
 app.use('/api/orders', orderRoute);
+app.use("/api/messages", messageRoute);
+app.use("/api/conversations", conversationRoute);
 
 app.use((err, req, res, next) =>{
   const errorStatus = err.status || 500
