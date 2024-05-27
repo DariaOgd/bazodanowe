@@ -6,6 +6,7 @@ import userRoute from "./routes/user.route.js"
 import cookieParser from "cookie-parser";
 import productRoute from "./routes/product.route.js"
 import cartRoute from "./routes/cart.route.js"
+import orderRoute from "./routes/order.route.js"
 import { verifyToken } from "./middleware/jwt.js";
 import cors from "cors"
 const app = express();
@@ -31,6 +32,7 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use('/api/cart', cartRoute); // Use cart route
+app.use('/api/orders', orderRoute);
 
 app.use((err, req, res, next) =>{
   const errorStatus = err.status || 500

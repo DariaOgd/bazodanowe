@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/cartContext';
 import NavbarDefault from '../../components/navbar/NavbarDefault';
 import './Cart.scss';
+import { usePaymentInputs } from 'react-payment-inputs';
+import images from 'react-payment-inputs/images';
+import axiosInstance from './axios.Instance.js'
+import { isValidCardNumber, isValidExpiryDate, isValidCVV } from './validation';
 
 function Cart() {
   const { cart, removeFromCart } = useCart();
@@ -13,9 +18,18 @@ function Cart() {
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
+  const navigate = useNavigate();
+
+  const {
+    getCardImageProps,
+    getCardNumberProps,
+    getExpiryDateProps,
+    getCVCProps,
+    wrapperProps
+  } = usePaymentInputs();
 
   if (!cart || !cart.items) {
-    return <div className="cart-container">Loading...</div>; // Show loading state if cart is not loaded
+    return <div className="cart-container">Loading...</div>;
   }
 
   const handleRemoveFromCart = async (productId) => {
@@ -23,21 +37,62 @@ function Cart() {
     window.location.reload();
   };
 
-  // Calculate the total amount
   const totalAmount = cart.items.reduce((total, item) => {
     return total + item.productId.price * item.quantity;
   }, 0);
 
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
-    setPaymentProcessing(true);
-    // Implement payment processing logic here
-    console.log('Processing payment with card number:', cardNumber);
-    // Simulate payment processing delay
-    setTimeout(() => {
-      setPaymentProcessing(false);
-      alert('Payment successful!');
-    }, 2000);
+    const cardNumberValue = cardNumber.replace(/\s+/g, ''); // Use the state value directly
+    if (
+      isValidCardNumber(cardNumberValue) &&
+      isValidExpiryDate(expiryDate) &&
+      isValidCVV(cvv)
+    ) {
+      setPaymentProcessing(true);
+      try {
+        console.log('Sending payment request with data:', {
+          totalAmount,
+          address,
+          city,
+          zipCode,
+          country,
+          products: cart.items.map(item => ({
+            productId: item.productId._id,
+            quantity: item.quantity
+          })),
+          cardNumber: cardNumberValue,
+          expiryDate,
+          cvv
+        });
+        const response = await axiosInstance.post('/api/orders/create', {
+          totalAmount,
+          address,
+          city,
+          zipCode,
+          country,
+          products: cart.items.map(item => ({
+            productId: item.productId._id,
+            quantity: item.quantity
+          })),
+          cardNumber: cardNumberValue,
+          expiryDate,
+          cvv
+        });
+
+        console.log('Payment successful:', response.data); // Log success
+        alert('Payment successful! Order ID: ' + response.data._id);
+        navigate('/'); // Navigate to the home page
+
+      } catch (error) {
+        console.error('Payment error:', error); // Log error
+        alert('Payment failed. Please try again.');
+      } finally {
+        setPaymentProcessing(false);
+      }
+    } else {
+      alert('Please enter valid payment details.');
+    }
   };
 
   return (
@@ -77,34 +132,24 @@ function Cart() {
         </div>
         <div className="payment-form">
           <form onSubmit={handlePaymentSubmit}>
-            <div className="form-group">
-              <label htmlFor="cardNumber">Card Number</label>
+            <div {...wrapperProps}>
+              <svg {...getCardImageProps({ images })} />
               <input
-                type="text"
-                id="cardNumber"
-                value={cardNumber}
-                onChange={(e) => setCardNumber(e.target.value)}
+                {...getCardNumberProps({
+                  onChange: (e) => setCardNumber(e.target.value)
+                })}
                 required
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="expiryDate">Expiry Date</label>
               <input
-                type="text"
-                id="expiryDate"
-                value={expiryDate}
-                onChange={(e) => setExpiryDate(e.target.value)}
-                placeholder="MM/YY"
+                {...getExpiryDateProps({
+                  onChange: (e) => setExpiryDate(e.target.value)
+                })}
                 required
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="cvv">CVV</label>
               <input
-                type="text"
-                id="cvv"
-                value={cvv}
-                onChange={(e) => setCvv(e.target.value)}
+                {...getCVCProps({
+                  onChange: (e) => setCvv(e.target.value)
+                })}
                 required
               />
             </div>
