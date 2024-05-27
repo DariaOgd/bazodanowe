@@ -5,11 +5,11 @@ import NavbarDefault from '../../components/navbar/NavbarDefault';
 import './Cart.scss';
 import { usePaymentInputs } from 'react-payment-inputs';
 import images from 'react-payment-inputs/images';
-import axiosInstance from './axios.Instance.js'
+import axiosInstance from './axios.Instance.js'; // Import the Axios instance
 import { isValidCardNumber, isValidExpiryDate, isValidCVV } from './validation';
 
 function Cart() {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, clearCart } = useCart();
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
@@ -82,6 +82,10 @@ function Cart() {
 
         console.log('Payment successful:', response.data); // Log success
         alert('Payment successful! Order ID: ' + response.data._id);
+
+        // Clear the cart after successful payment
+        await clearCart();
+
         navigate('/'); // Navigate to the home page
 
       } catch (error) {
