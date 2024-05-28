@@ -1,4 +1,3 @@
-// src/components/navbar/NavbarDefault.js
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
@@ -72,7 +71,7 @@ function NavbarDefault({ setSearchQuery }) {
               </button>
               <ul className={`dropdown-menu${dropdownOpen ? ' show' : ''} dropdown-menu-end`} aria-labelledby="dropdownMenuButton">
                 <li className="custom-dropdown-item"><Link className="dropdown-item" to="/add">Add a new product</Link></li>
-                <li className="custom-dropdown-item"><Link className="dropdown-item" to="#">Your orders</Link></li>
+                <li className="custom-dropdown-item"><Link className="dropdown-item" to="/orders">Your orders</Link></li> {/* Added link to orders */}
                 <li className="custom-dropdown-item"><Link className="dropdown-item" to={`/profile/${currentUser._id}`}>Your profile</Link></li>
                 <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
                 <li className="custom-dropdown-item">

@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import Chat from './pages/chat/Chat';
 import Cart from './pages/Cart/Cart'
 import { CartProvider } from './context/cartContext'
+import  UserOrder from "./pages/orders/Orders.jsx"
 
 const queryClient = new QueryClient(); // Create the QueryClient instance
 
@@ -38,6 +39,8 @@ function App() {
               <Route path="/messages" element={<Messages />} />
               <Route path="/chat/:id" element={<Chat />} />
               <Route path="/cart" element={<Cart />} /> {/* Add the cart route */}
+              <Route path="/orders" element={<UserOrder></UserOrder>} />
+
             </Routes>
           </BrowserRouter>
         </CartProvider>

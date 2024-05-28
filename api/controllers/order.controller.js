@@ -79,3 +79,17 @@ export const deleteOrder = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getUserOrders = async (req, res, next) => {
+  try {
+    const userId = req.query.userId; // Get user ID from query parameters
+    if (!userId) {
+      return res.status(400).json({ message: "User ID is required" });
+    }
+
+    const orders = await Order.find({ userId }).populate('products.productId');
+    res.status(200).json(orders);
+  } catch (err) {
+    next(err);
+  }
+};
