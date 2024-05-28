@@ -84,16 +84,17 @@
     margin-top: 60px;
 }
 #trash-icon{
-    position:absolute;
-    right:6.5rem;
+    position:static;
+    margin-left:35rem;
+    margin-right: 5px;
     &:hover{
         cursor: pointer;
         color:red;
     }
 }
 #edit-icon{
-    position:absolute;
-    right:8rem;
+    position:static;
+    margin-right:1rem;
     color:black;
     &:hover{
         cursor: pointer;

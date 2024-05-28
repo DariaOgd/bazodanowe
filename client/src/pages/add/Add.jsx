@@ -55,7 +55,7 @@ const Add = () => {
     mutation.mutate(state);
   };
   const bookCategories = ["Fiction", "Non-fiction", "Mystery", "Romance", "Fantasy", "Science Fiction", "Thriller", "Horror"];
-
+  const bookStates = ["new", "used","broken"];
   return (
     <div className="">
       <NavbarDefault></NavbarDefault>
@@ -113,12 +113,13 @@ const Add = () => {
               onChange={handleChange}
             />
             <label htmlFor="">State</label>
-            <input
-              type="text"
-              name="state"
-              placeholder="Product state"
-              onChange={handleChange}
-            />
+            <select className="form-select" aria-label="Default select example" name="state" onChange={handleChange}>
+              {bookStates.map((state, index) => (
+                <option key={index} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
