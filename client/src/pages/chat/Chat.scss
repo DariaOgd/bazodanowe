@@ -1,23 +1,32 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: auto; 
+  }
+
 .chat{
-display:flex;
-justify-content: center;
+    display:flex;
+    justify-content: center;
 
     .container{
         width:1200px;
-        margin:50px;
+        margin:20px 50px 50px;
         .breadcrumbs{
            font-weight: 300;
             font-size: 13px;
             color:gray;
+            margin-bottom: 10px;
         }
         .messages{
-            margin: 30px 0px;
+            margin: 20px 0px;
             padding: 50px;
             display: flex;
             flex-direction: column;
             gap:20px;
             height:500px;
-            overflow: scroll;
+            overflow: hidden;
+            overflow-y: auto;
+
 
             .item{
                 display: flex;
@@ -30,9 +39,10 @@ justify-content: center;
                     align-self: flex-end;
 
                     p{
-                        border-radius: 20px 0px 20px 20px;
+                        border-radius: 20px 20px 0px 20px;
                         background-color: #007bff;
                         color:white;
+
                     }
                 }
 
@@ -63,14 +73,22 @@ justify-content: center;
                 padding:10px;
                 border:1px solid lightgray; 
                 border-radius: 10px;
+                transition: border-color 0.3s;
+
             }
+                textarea:focus{
+                    border-color: gray; 
+                    outline: none;
+                    
+                }
+            
 
             button{
                 background-color: #007bff;
                 padding:15px;
                 color:white;
                 border:none;
-                margin-left: 2rem;
+                margin-left: 1rem;
                 border-radius: 10px;
                 cursor: pointer;
                 width:90px;
@@ -89,6 +107,13 @@ justify-content: center;
 }
 #chat-heading{
     text-align: center;
+    margin-bottom: 0px;
     font-size: 14px;
     color:rgb(111, 111, 111);
 }
+.messages-container {
+    height: 500px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+  }

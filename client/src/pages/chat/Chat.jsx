@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import "./Chat.scss";
 import Footer from "../../components/Footer";
@@ -34,13 +34,25 @@ const Chat = () => {
     e.target[0].value = "";
   };
 
+  const messagesRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (messagesRef.current) {
+      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [data]);
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const otherUserMessage = data.find(message => message.userId !== currentUser._id);
 
   return (
-    <div>
+    <div className="chat-container">
       <NavbarDefault />
       <div className='chat'>
         <div className='container'>
@@ -53,7 +65,7 @@ const Chat = () => {
             )}
           </span>
           <h3 id="chat-heading">YOU ARE CHATTING WITH: <Link to={`/profile/${otherUserMessage.userId}`} className='link'>{otherUserMessage.userId}</Link> </h3>
-          <div className="messages">
+          <div className="messages" ref={messagesRef}>
             {data.map((m) => (
               <div className={m.userId === currentUser._id ? "owner item" : "item"} key={m._id}>
                 <img src="../user-icon.png" id="user-icon" alt="userIcon"></img>
@@ -70,6 +82,9 @@ const Chat = () => {
       </div>
       <Footer />
     </div>
-  )
-} 
+  );
+};
+
 export default Chat;
+
+
