@@ -7,6 +7,7 @@ import { usePaymentInputs } from 'react-payment-inputs';
 import images from 'react-payment-inputs/images';
 import axiosInstance from './axios.Instance.js'; // Import the Axios instance
 import { isValidCardNumber, isValidExpiryDate, isValidCVV } from './validation';
+import Footer from "../../components/Footer";
 
 function Cart() {
   const { cart, removeFromCart, clearCart } = useCart();
@@ -135,27 +136,29 @@ function Cart() {
           )}
         </div>
         <div className="payment-form">
-          <form onSubmit={handlePaymentSubmit}>
-            <div {...wrapperProps}>
-              <svg {...getCardImageProps({ images })} />
-              <input
-                {...getCardNumberProps({
-                  onChange: (e) => setCardNumber(e.target.value)
-                })}
-                required
-              />
-              <input
-                {...getExpiryDateProps({
-                  onChange: (e) => setExpiryDate(e.target.value)
-                })}
-                required
-              />
-              <input
-                {...getCVCProps({
-                  onChange: (e) => setCvv(e.target.value)
-                })}
-                required
-              />
+          <form onSubmit={handlePaymentSubmit} id="form-card-payment">
+            <div {...wrapperProps} id="payment-div">
+                { /*<svg {...getCardImageProps({ images })} /> */}
+                <input id="card-number"
+                  {...getCardNumberProps({
+                    onChange: (e) => setCardNumber(e.target.value)
+                  })}
+                  required
+                />
+                <div className="inline-fields">
+                  <input id="card-date"
+                    {...getExpiryDateProps({
+                      onChange: (e) => setExpiryDate(e.target.value)
+                    })}
+                    required
+                  />
+                  <input id="card-cvc"
+                    {...getCVCProps({
+                      onChange: (e) => setCvv(e.target.value)
+                    })}
+                    required
+                  />
+                </div>
             </div>
             <div className="form-group">
               <label htmlFor="address">Address</label>
@@ -203,6 +206,7 @@ function Cart() {
           </form>
         </div>
       </div>
+    <Footer></Footer>
     </div>
   );
 }

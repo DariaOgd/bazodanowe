@@ -13,6 +13,7 @@
   padding: 20px;
   max-width: 60%;
   margin-right: 20px;
+  
 
   h1 {
     text-align: center;
@@ -74,7 +75,7 @@
         font-size: 1.2em;
 
         &:hover {
-          color: #000;
+          color: red;
         }
 
         &:focus {
@@ -98,9 +99,10 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9 !important;
   position: sticky;
   left: 10px;
+  margin-right: 5rem;
 
   h2 {
     text-align: center;
@@ -111,11 +113,13 @@
 
   .form-group {
     margin-bottom: 15px;
+    background-color: #F9F9F9 !important;
 
     label {
       display: block;
       margin-bottom: 5px;
       color: #666;
+      background-color: #F9F9F9;
     }
 
     input {
@@ -125,6 +129,10 @@
       border-radius: 4px;
       font-size: 1em;
     }
+    form{
+      background-color: #F9F9F9 !important;
+    }
+
   }
 
   .payment-button {
@@ -137,6 +145,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
 
     &:hover {
       background-color: #0056b3;
@@ -155,4 +164,31 @@ input{
   border-radius: 4px;
   font-size: 1em;
 
+}
+#payment-div{
+  background-color: #F9F9F9 !important;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+#form-card-payment{
+  background-color: #F9F9F9 !important;
+
+}
+.inline-fields {
+  display: flex;
+  justify-content: space-between;
+  background-color: #F9F9F9 !important;
+}
+.inline-fields input {
+  width: 48%; 
+}
+#cardNumber{
+  margin-bottom: 10px;
+}
+#cvc{
+  margin-bottom: 5px;
+}
+#expiryDate{
+  margin-bottom: 5px;
 }
