@@ -53,6 +53,7 @@ const Add = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["products"]);
       navigate("/");
+      window.location.reload()
     },
   });
 
