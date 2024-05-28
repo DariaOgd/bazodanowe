@@ -130,6 +130,7 @@ function Cart() {
                   </li>
                 ))}
               </ul>
+             
               <div className="total-amount">
                 <h2>Total Amount: ${totalAmount.toFixed(2)}</h2>
               </div>

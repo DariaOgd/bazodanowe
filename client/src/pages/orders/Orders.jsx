@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavbarDefault from '../../components/navbar/NavbarDefault';
 import './Orders.scss';
+import Footer from "../../components/Footer";
 
 function UserOrders() {
   const [orders, setOrders] = useState([]);
@@ -35,8 +36,9 @@ function UserOrders() {
       <NavbarDefault /> {/* Ensure the Navbar is included here */}
       <div className="orders-container">
         <h1>Your Orders</h1>
+        <hr/>
         {orders.length === 0 ? (
-          <p className="no-orders">You have no orders.</p>
+          <p className="no-orders">You have no orders</p>
         ) : (
           <ul className="orders-list">
             {orders.map((order) => (
@@ -61,6 +63,7 @@ function UserOrders() {
           </ul>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }
