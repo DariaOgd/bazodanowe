@@ -77,6 +77,7 @@ const Edit = () => {
     "Thriller",
     "Horror",
   ];
+  const bookStates = ["new", "used", "broken"];
 
   return (
     <div className="edit">
@@ -141,14 +142,14 @@ const Edit = () => {
                 value={product.price}
                 onChange={handleChange}
               />
-              <label htmlFor="state">State</label>
-              <input
-                type="text"
-                name="state"
-                placeholder="Product state"
-                value={product.state}
-                onChange={handleChange}
-              />
+              <label htmlFor="">State</label>
+              <select className="form-select" aria-label="Default select example" name="state" onChange={handleChange}>
+                {bookStates.map((state, index) => (
+                  <option key={index} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </form>
