@@ -38,6 +38,10 @@ const ProductSchema = new Schema(
       required: true,
       enum: ["new", "used", "broken"],
     },
+    bought: {
+      type: Boolean,
+      default: false, // Default to false, indicating the product has not been bought yet
+    },
     createdAt: {
       type: Date,
       default: Date.now,

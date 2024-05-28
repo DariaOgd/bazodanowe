@@ -7,12 +7,16 @@ import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 import "./Add.scss";
 import Footer from "../../components/Footer";
+
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
 
   const [state, dispatch] = useReducer(productReducer, INITIAL_STATE);
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser")); // Get current user
+  console.log("Current User:", currentUser); // Log current user
 
   const handleChange = (e) => {
     dispatch({
@@ -42,11 +46,13 @@ const Add = () => {
 
   const mutation = useMutation({
     mutationFn: (product) => {
-      return newRequest.post("/products", product);
+      const payload = { ...product, userId: currentUser._id }; // Include userId in the request
+      console.log("Payload being sent:", payload); // Log payload
+      return newRequest.post("/products", payload);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["products"]);
-      navigate("/")
+      navigate("/");
     },
   });
 
@@ -54,80 +60,79 @@ const Add = () => {
     e.preventDefault();
     mutation.mutate(state);
   };
+
   const bookCategories = ["Fiction", "Non-fiction", "Mystery", "Romance", "Fantasy", "Science Fiction", "Thriller", "Horror"];
-  const bookStates = ["new", "used","broken"];
+  const bookStates = ["new", "used", "broken"];
+
   return (
     <div className="">
-      <NavbarDefault></NavbarDefault>
+      <NavbarDefault />
       <div className="add">
-      <div className="container">
-        <h1>Add New Product</h1>
-        <div className="sections">
-          <div className="info">
-            <label htmlFor="">Title</label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Product title"
-              onChange={handleChange}
-            />
-            <label htmlFor="">Category</label>
-            <select className="form-select" aria-label="Default select example" name="category" onChange={handleChange}>
-              {bookCategories.map((category, index) => (
-                <option key={index} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <div className="images">
-              <div className="imagesInputs">
-                
-                <label htmlFor="">Upload Images</label>
-                <input
-                  type="file"
-                  multiple
-                  onChange={(e) => setFiles(e.target.files)}
-                />
+        <div className="container">
+          <h1>Add New Product</h1>
+          <div className="sections">
+            <div className="info">
+              <label htmlFor="">Title</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Product title"
+                onChange={handleChange}
+              />
+              <label htmlFor="">Category</label>
+              <select className="form-select" aria-label="Default select example" name="category" onChange={handleChange}>
+                {bookCategories.map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <div className="images">
+                <div className="imagesInputs">
+                  <label htmlFor="">Upload Images</label>
+                  <input
+                    type="file"
+                    multiple
+                    onChange={(e) => setFiles(e.target.files)}
+                  />
+                </div>
+                <button onClick={handleUpload}>
+                  {uploading ? "Uploading..." : "Upload"}
+                </button>
               </div>
-              <button onClick={handleUpload}>
-                {uploading ? "Uploading..." : "Upload"}
-              </button>
+              <label htmlFor="">Description</label>
+              <textarea
+                name="desc"
+                placeholder="Product description"
+                cols="0"
+                rows="6"
+                onChange={handleChange}
+              ></textarea>
+              <button onClick={handleSubmit}>Create</button>
             </div>
-            <label htmlFor="">Description</label>
-            <textarea
-              name="desc"
-              placeholder="Product description"
-              cols="0"
-              rows="6"
-              onChange={handleChange}
-            ></textarea>
-            <button onClick={handleSubmit}>Create</button>
-          </div>
-          <div className="details">
-            <label htmlFor="">Price</label>
-            <input
-              type="number"
-              name="price"
-              min="1"
-              placeholder="Product price"
-              onChange={handleChange}
-            />
-            <label htmlFor="">State</label>
-            <select className="form-select" aria-label="Default select example" name="state" onChange={handleChange}>
-              {bookStates.map((state, index) => (
-                <option key={index} value={state}>
-                  {state}
-                </option>
-              ))}
-            </select>
+            <div className="details">
+              <label htmlFor="">Price</label>
+              <input
+                type="number"
+                name="price"
+                min="1"
+                placeholder="Product price"
+                onChange={handleChange}
+              />
+              <label htmlFor="">State</label>
+              <select className="form-select" aria-label="Default select example" name="state" onChange={handleChange}>
+                {bookStates.map((state, index) => (
+                  <option key={index} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
-    <Footer></Footer>
-    </div>
-    
-    
   );
 };
 

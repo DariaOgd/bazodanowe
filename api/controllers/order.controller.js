@@ -1,4 +1,5 @@
 import Order from '../models/order.model.js';
+import Product from '../models/product.model.js'; // Add this line to import the Product model
 import crypto from 'crypto';
 
 const hashCardInfo = (cardInfo) => {
@@ -37,6 +38,12 @@ export const createOrder = async (req, res, next) => {
     });
 
     const savedOrder = await newOrder.save();
+
+    await Product.updateMany(
+      { _id: { $in: products.map(p => p.productId) } },
+      { $set: { bought: true } }
+    );
+
     console.log('Order created successfully:', savedOrder); // Log success
     res.status(201).json(savedOrder);
   } catch (err) {
@@ -44,6 +51,7 @@ export const createOrder = async (req, res, next) => {
     next(err);
   }
 };
+
 export const updateOrderStatus = async (req, res, next) => {
   try {
     const { orderId, status } = req.body;

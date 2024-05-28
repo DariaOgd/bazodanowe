@@ -58,9 +58,11 @@ function Product() {
   console.log("user id - seller");
   console.log(userId);
   console.log("user id - logged");
+ 
+  
   const logged = currentUser?._id;
+  console.log(logged)
   const ifuserSeller = userId === logged;
-
   const handleDeleteProduct = async () => {
     try {
       await newRequest.delete(`/products/${id}`);
@@ -76,10 +78,10 @@ function Product() {
   const handleAddToCart = async () => {
     try {
       await addToCart(id);
-      window.location.reload()
-      console.log('Product added to cart successfully!');
+      window.location.reload();
+      console.log("Product added to cart successfully!");
     } catch (error) {
-      console.error('Error adding product to cart:', error);
+      console.error("Error adding product to cart:", error);
     }
   };
 
@@ -107,15 +109,26 @@ function Product() {
                   onClick={handleDeleteProduct}
                 />
                 <Link to={`/edit/${id}`}>
-                  <FontAwesomeIcon id="edit-icon" title="Edit Product" icon={faEdit} />
+                  <FontAwesomeIcon
+                    id="edit-icon"
+                    title="Edit Product"
+                    icon={faEdit}
+                  />
                 </Link>
               </div>
             )}
 
             <div className="info"></div>
 
-            <p className="username">Seller:  
-              <Link id="seller-link" title="Visit user's profile" to={`/profile/${data.userId}`}>{dataUser?.name || 'Seller'}</Link>
+            <p className="username">
+              Seller:
+              <Link
+                id="seller-link"
+                title="Visit user's profile"
+                to={`/profile/${data.userId}`}
+              >
+                {dataUser?.name || "Seller"}
+              </Link>
             </p>
 
             <h1>{data.title}</h1>
@@ -127,18 +140,19 @@ function Product() {
               <h2>${data.price}</h2>
             </div>
             <div className="add-basket">
-              <button onClick={handleAddToCart}>Add to cart</button>
+              {data.bought ? (
+                <p className="bought-message">This product has been bought</p>
+              ) : (
+                <button onClick={handleAddToCart}>Add to cart</button>
+              )}
             </div>
           </div>
         </div>
       )}
 
       {showAlert && (
-        <Stack >
-          <Alert
-            severity="success"
-            onClose={() => setShowAlert(false)}
-          >
+        <Stack>
+          <Alert severity="success" onClose={() => setShowAlert(false)}>
             Product has been deleted successfully.
           </Alert>
         </Stack>
