@@ -64,7 +64,9 @@ const Chat = () => {
               </Link>
             )}
           </span>
-          <h3 id="chat-heading">YOU ARE CHATTING WITH: <Link to={`/profile/${otherUserMessage.userId}`} className='link'>{otherUserMessage.userId}</Link> </h3>
+          <h3 id="chat-heading">YOU ARE CHATTING WITH: {otherUserMessage && (
+            <Link to={`/profile/${otherUserMessage.userId}`} className='link'>{otherUserMessage.userId}</Link>
+          )}</h3>
           <div className="messages" ref={messagesRef}>
             {data.map((m) => (
               <div className={m.userId === currentUser._id ? "owner item" : "item"} key={m._id}>
@@ -83,6 +85,7 @@ const Chat = () => {
       <Footer />
     </div>
   );
+  
 };
 
 export default Chat;

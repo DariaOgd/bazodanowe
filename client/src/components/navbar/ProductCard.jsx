@@ -15,12 +15,16 @@ const ProductCard = ({ item }) => {
           
                     
                 </div>
+                
                 <div className="card-footer d-flex justify-content-between align-items-spaceline">
+                
                     <p>${item.price}</p>
+                    
                     <button className="btn">Add to Cart</button>
                 </div>
             </div>
-        </Link>
+            </Link>
+        
     );
 };
 
