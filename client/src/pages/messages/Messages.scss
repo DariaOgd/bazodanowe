@@ -1,7 +1,13 @@
+html,body {
+  height: 100%;
+  margin: 0;
+}
+
 .messages-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    //min-height: 100vh;
+    height: 100vh;
   }
   
   .container {
@@ -33,12 +39,11 @@
   }
   
   .link {
-    
     text-decoration: none;
-  }
-  
-  .link:hover {
-    text-decoration: underline;
+    &:hover{
+      //font-weight: bold;
+      text-decoration: underline;
+    }
   }
   
   button {
@@ -49,3 +54,6 @@
   button:hover {
     background-color: #ddd;
   }
+#placeholder-div{
+  margin:23rem;
+}

@@ -72,7 +72,8 @@ const Messages = () => {
           </tbody>
         </table>
       </div>
-      <Footer />
+      <div id="placeholder-div"></div>
+      <Footer/>
     </div>
   );
 }
