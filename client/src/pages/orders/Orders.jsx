@@ -40,27 +40,29 @@ function UserOrders() {
         {orders.length === 0 ? (
           <p className="no-orders">You have no orders</p>
         ) : (
-          <ul className="orders-list">
-            {orders.map((order) => (
-              <li key={order._id} className="order-item">
-                <h2>Order ID: {order._id}</h2>
-                <p>Total Amount: ${order.totalAmount}</p>
-                <p>Status: {order.status}</p>
-                <div className="order-products">
-                  {order.products.map((product) => (
-                    <div key={product.productId._id} className="product-item">
-                      <img src={product.productId.images[0]} alt={product.productId.title} />
-                      <div className="product-details">
-                        <h3>{product.productId.title}</h3>
-                        <p>Quantity: {product.quantity}</p>
-                        <p>Price: ${product.productId.price}</p>
+          <div id="orders-div">
+            <ul className="orders-list">
+              {orders.map((order) => (
+                <li key={order._id} className="order-item">
+                  <h2>Order ID: {order._id}</h2>
+                  <p>Total Amount: ${order.totalAmount}</p>
+                  <p>Status: {order.status}</p>
+                  <div className="order-products">
+                    {order.products.map((product) => (
+                      <div key={product.productId._id} className="product-item">
+                        <img src={product.productId.images[0]} alt={product.productId.title} />
+                        <div className="product-details">
+                          <h3>{product.productId.title}</h3>
+                          <p>Quantity: {product.quantity}</p>
+                          <p>Price: ${product.productId.price}</p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ul>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
       <Footer/>
