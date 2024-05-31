@@ -6,6 +6,7 @@ import ProductCard from "../../components/navbar/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest.js";
 import Footer from "../../components/Footer.jsx";
+import { useCart } from "../../context/cartContext"; // Import the useCart hook
 
 function Home() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -18,7 +19,8 @@ function Home() {
         queryKey: ['repoData'],
         queryFn: () => newRequest.get("/products").then(res => res.data)
     });
-    console.log(data)
+
+    const { addToCart } = useCart(); // Use the addToCart hook
 
     // Define sorting function
     const sortProducts = (products, sortingType) => {
@@ -102,7 +104,13 @@ function Home() {
                                             (product.title &&
                                                 product.title.toLowerCase().includes(searchQuery.toLowerCase()))) // Null check for product.title
                                     )
-                                    .map((product) => <ProductCard key={product._id} item={product} />)
+                                    .map((product) => (
+                                        <ProductCard
+                                            key={product._id}
+                                            item={product}
+                                            // No need to pass handleAddToCart here since it's already in ProductCard
+                                        />
+                                    ))
                             )}
                         </div>
                     </div>
