@@ -120,7 +120,7 @@ cd <nazwa-folderu-repozytorium>
 
 Zainstaluj zależności dla serwera (backend)
 Przejdź do folderu api i zainstaluj zależności, wykonując poniższe polecenia:
-``bash
+```bash
 cd api
 npm install
 
@@ -145,7 +145,7 @@ Uruchom aplikację klienta (frontend)
 Przejdź do folderu client i uruchom aplikację, wykonując poniższe polecenie:
 cd ../client
 npm start
-
+```
 ## 5. Testy
 
 ### Scenariusze Testowe dla Rejestracji i Logowania Użytkownika
