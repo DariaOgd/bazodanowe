@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
-import NavbarDefault from "../../components/navbar/NavbarDefault";
+import NavbarDefault from "../../components/navbar/Navbar";
 import ProductCard from "../../components/navbar/ProductCard";
 import "./userProfile.scss";
 import Footer from "../../components/Footer.jsx";

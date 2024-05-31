@@ -2,7 +2,7 @@ import React from 'react';
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
-import NavbarDefault from "../../components/navbar/NavbarDefault";
+import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/Footer";
 import './Messages.scss';
 import moment from "moment";
@@ -34,7 +34,7 @@ const Messages = () => {
 
   return (
     <div>
-      <NavbarDefault />
+      <Navbar />
       <div className="container">
         <div className="title">
           <h1>Messages</h1>

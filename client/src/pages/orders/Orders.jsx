@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import NavbarDefault from '../../components/navbar/NavbarDefault';
+import NavbarDefault from '../../components/navbar/Navbar';
 import './Orders.scss';
 import Footer from "../../components/Footer";
 

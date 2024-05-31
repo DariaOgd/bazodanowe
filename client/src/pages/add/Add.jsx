@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { productReducer, INITIAL_STATE } from "../../reducers/productReducer";
 import upload from "../../utils/upload";
-import NavbarDefault from "../../components/navbar/NavbarDefault";
+import Navbar from "../../components/navbar/Navbar";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +67,7 @@ const Add = () => {
 
   return (
     <div className="">
-      <NavbarDefault />
+      <Navbar />
       <div className="add">
         <div className="container">
           <h1>Add New Product</h1>

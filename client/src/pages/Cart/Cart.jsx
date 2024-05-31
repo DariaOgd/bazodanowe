@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/cartContext';
-import NavbarDefault from '../../components/navbar/NavbarDefault';
+import Navbar from '../../components/navbar/Navbar';
 import './Cart.scss';
 import { usePaymentInputs } from 'react-payment-inputs';
 import images from 'react-payment-inputs/images';
@@ -102,7 +102,7 @@ function Cart() {
 
   return (
     <div className="container-cart">
-      <NavbarDefault />
+      <Navbar />
       <div className="cart-and-payment">
         <div className="cart-container">
           <h1>Your Shopping Cart</h1>

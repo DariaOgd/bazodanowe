@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
+import Navbar from "../../components/navbar/Navbar";
+
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Alert from "@mui/material/Alert";
@@ -87,7 +89,7 @@ function Product() {
 
   return (
     <div className="product">
-      <NavbarDefault />
+      <Navbar />
       {isLoading || isLoadingUser ? (
         "Loading..."
       ) : error || errorUser ? (
