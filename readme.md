@@ -104,7 +104,6 @@ SOFTWARE.
   - **utils**: Zawiera pomocnicze funkcje lub moduły.
 
 
-### Instrukcje uruchomienia
 
 ### Wymagania wstępne
 
@@ -113,8 +112,39 @@ Upewnij się, że masz zainstalowane następujące oprogramowanie:
 - [MongoDB](https://www.mongodb.com/try/download/community) (lokalnie lub jako usługa chmurowa, np. MongoDB Atlas)
 - [Git](https://git-scm.com/)
 
+### Kroki uruchomienia
+Sklonuj repozytorium z GitHub
+Otwórz terminal i wykonaj następujące polecenie, aby sklonować repozytorium:
+git clone <URL-repozytorium>
+cd <nazwa-folderu-repozytorium>
 
- 
+Zainstaluj zależności dla serwera (backend)
+Przejdź do folderu api i zainstaluj zależności, wykonując poniższe polecenia:
+cd api
+npm install
+
+Zainstaluj zależności dla klienta (frontend)
+Przejdź do folderu client i zainstaluj zależności, wykonując poniższe polecenia:
+cd ../client
+npm install
+
+Utwórz plik .env
+W folderze api utwórz plik .env z następującą zawartością, dostosowując wartości do swoich potrzeb:
+PORT=8800
+MONGO_URI=<URL-do-Twojej-Bazy-Danych-MongoDB>
+JWT_SECRET=<Twój-Sekretny-Klucz-JWT>
+
+Uruchom serwer (backend)
+Wróć do folderu api i uruchom serwer, wykonując poniższe polecenie:
+cd ../api
+npm start
+
+
+Uruchom aplikację klienta (frontend)
+Przejdź do folderu client i uruchom aplikację, wykonując poniższe polecenie:
+cd ../client
+npm start
+
 ## 5. Testy
 
 ### Scenariusze Testowe dla Rejestracji i Logowania Użytkownika
