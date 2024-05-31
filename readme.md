@@ -120,6 +120,7 @@ cd <nazwa-folderu-repozytorium>
 
 Zainstaluj zależności dla serwera (backend)
 Przejdź do folderu api i zainstaluj zależności, wykonując poniższe polecenia:
+``bash
 cd api
 npm install
 
