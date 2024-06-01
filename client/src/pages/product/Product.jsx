@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import NavbarDefault from "../../components/navbar/NavbarDefault";
 import Navbar from "../../components/navbar/Navbar";
-
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Alert from "@mui/material/Alert";
@@ -19,7 +18,8 @@ function Product() {
   const [user, setUser] = useState(null);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [showAlert, setShowAlert] = useState(false);
-  const { addToCart } = useCart(); // Use the addToCart hook
+  const { addToCart } = useCart();
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -60,7 +60,6 @@ function Product() {
   console.log("user id - seller");
   console.log(userId);
   console.log("user id - logged");
- 
   
   const logged = currentUser?._id;
   console.log(logged)
@@ -78,6 +77,12 @@ function Product() {
   };
 
   const handleAddToCart = async () => {
+    if (!currentUser) {
+      alert("You must be logged in to add products to the cart.");
+      navigate("/login");
+      return;
+    }
+
     try {
       await addToCart(id);
       window.location.reload();
@@ -172,3 +177,4 @@ function Product() {
 }
 
 export default Product;
+

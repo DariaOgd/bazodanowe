@@ -7,7 +7,6 @@ import "./userProfile.scss";
 import Footer from "../../components/Footer.jsx";
 import { useQuery } from "@tanstack/react-query";
 
-
 function UserProfile() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
@@ -15,6 +14,7 @@ function UserProfile() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -40,7 +40,6 @@ function UserProfile() {
     setLoading(false);
   }, [id]);
 
-  const navigate = useNavigate();
   const { isLoading, data } = useQuery({
     queryKey: ["orders"],
     queryFn: () =>
@@ -50,6 +49,11 @@ function UserProfile() {
   });
 
   const handleContact = async () => {
+    if (!currentUser) {
+      alert("You must be logged in to send messages");
+      navigate("/login");
+      return;
+    }
 
     if (!user) {
       setError("User data is missing");
@@ -59,6 +63,11 @@ function UserProfile() {
     const sellerId = user._id;
     const buyerId = currentUser._id;
     const conversationId = sellerId + buyerId;
+
+    if (sellerId === buyerId) {
+      alert("You cannot message yourself!");
+      return;
+    }
 
     try {
       const res = await newRequest.get(`/conversations/single/${conversationId}`);
@@ -79,7 +88,6 @@ function UserProfile() {
     }
   };
 
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -99,7 +107,6 @@ function UserProfile() {
           <button onClick={handleContact}>Message</button>
         </div>
         <div className="user-products">
-          
           <div className="products-list">
             {products.length > 0 ? (
               products.map(product => <ProductCard key={product._id} item={product} />)
@@ -115,3 +122,4 @@ function UserProfile() {
 }
 
 export default UserProfile;
+

@@ -1,18 +1,25 @@
 import React from 'react';
 import './ProductCard.scss';
-import { Link, useParams} from 'react-router-dom';
+import { Link, useParams, useNavigate} from 'react-router-dom';
 import { useCart } from "../../context/cartContext";
 
 const ProductCard = ({ item }) => {
     const { id } = useParams();
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const { addToCart } = useCart(); 
+    const navigate = useNavigate(); 
 
     const handleAddToCart = async (e) => {
         e.stopPropagation(); 
         e.preventDefault();
+        if (!currentUser) {
+            alert("You must be logged in to add products to the cart.");
+            navigate("/login");
+            return;
+          }
         try {
           await addToCart(item._id);
-         // window.location.reload()
+          window.location.reload()
           console.log('Product added to cart successfully!');
         } catch (error) {
           console.error('Error adding product to cart:', error);

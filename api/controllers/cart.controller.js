@@ -1,4 +1,5 @@
 import Cart from '../models/cart.model.js';
+import Product from '../models/product.model.js'
 
 export const getCart = async (req, res, next) => {
   try {
@@ -15,7 +16,18 @@ export const getCart = async (req, res, next) => {
 export const addToCart = async (req, res, next) => {
     try {
       const { productId, quantity } = req.body;
-  
+        
+            // Find the product to check the userId
+      const product = await Product.findById(productId);
+      if (!product) {
+        return res.status(404).json({ message: 'Product not found' });
+      }
+
+      // Check if the user is trying to add their own product
+      if (product.userId === req.userId) {
+        return res.status(403).json({ message: "You cannot add your own product to the cart" });
+      }
+
       // Find the cart for the current user
       let cart = await Cart.findOne({ userId: req.userId });
       if (!cart) {

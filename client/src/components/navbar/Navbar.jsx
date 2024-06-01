@@ -16,7 +16,7 @@ function NavbarDefault({ setSearchQuery }) {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [searchInput, setSearchInput] = useState(""); 
+  const [searchInput, setSearchInput] = useState("");
 
   const handleLogout = async () => {
     try {
@@ -41,13 +41,28 @@ function NavbarDefault({ setSearchQuery }) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-  
-          <Nav.Link className="cart" as={Link} to="/cart">
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </Nav.Link>
-          <Nav.Link className="messages" as={Link} to="/messages">
-            <FontAwesomeIcon icon={faMessage} />
-          </Nav.Link>
+          <Nav className="me-auto ms-3" style={{ maxHeight: '80px' }} navbarScroll>
+            <Form className="d-flex ms-4">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                value={searchInput}
+                onChange={handleSearch}
+              />
+            </Form>
+          </Nav>
+          {currentUser && (
+            <>
+              <Nav.Link className="cart" as={Link} to="/cart">
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </Nav.Link>
+              <Nav.Link className="messages" as={Link} to="/messages">
+                <FontAwesomeIcon icon={faMessage} />
+              </Nav.Link>
+            </>
+          )}
           {currentUser ? (
             <div className="dropdown ml-auto">
               <button
@@ -82,3 +97,4 @@ function NavbarDefault({ setSearchQuery }) {
 }
 
 export default NavbarDefault;
+

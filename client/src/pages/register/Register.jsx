@@ -11,6 +11,7 @@ function Register() {
     address: ''
   });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,18 +22,24 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(''); 
 
     try {
       await newRequest.post("auth/register", {
         ...user,
       });
-      setShowSuccessMessage(true); 
+      setShowSuccessMessage(true);
       setTimeout(() => {
-        setShowSuccessMessage(false); 
-        navigate("/login"); 
-      }, 1000); 
+        setShowSuccessMessage(false);
+        navigate("/login");
+      }, 1000);
     } catch (err) {
-      console.log(err);
+      if (err.response && err.response.status === 409) { 
+        setErrorMessage('Email already in use. Please use a different email.');
+      } else {
+        console.log(err);
+        setErrorMessage('An error occurred. Please try again.');
+      }
     }
   };
 
@@ -49,15 +56,22 @@ function Register() {
         {/* <label htmlFor="address"></label>
         <input type="text" name="address" value={user.address} onChange={handleChange} placeholder='Adres' /> */}
         <button type="submit">Sign Up</button>
-        <a id="redirect-link" href="/login">Already have an account?</a>
-      </form>
-      {showSuccessMessage && (
+        {showSuccessMessage && (
         // Display alert using browser's built-in alert function
         alert("Account created!")
       )}
-      
+      {errorMessage && (
+        <div className="error-message">{errorMessage}</div>
+      )}
+        <a id="redirect-link" href="/login">Already have an account?</a>
+      </form>
+     
     </div>
   );
 }
 
 export default Register;
+
+
+
+

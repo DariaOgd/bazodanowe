@@ -3,11 +3,16 @@ import Conversation from "../models/conversation.model.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export const createConversation = async (req, res, next) => {
-  const userId = req.userId; // Dodanie brakujących zmiennych
+  const userId = req.userId;
   const to = req.body.to;
 
+  // Prevent user from messaging themselves
+  if (userId === to) {
+    return next(createError(403, "You cannot message yourself!"));
+  }
+
   try {
-    // Sprawdź, czy istnieje konwersacja dla obu możliwych kombinacji ID
+    // Check if the conversation already exists
     const existingConversation = await Conversation.findOne({
       $or: [
         { sellerId: userId, buyerId: to },
@@ -16,13 +21,12 @@ export const createConversation = async (req, res, next) => {
     });
 
     if (existingConversation) {
-      // Jeśli konwersacja już istnieje, zwróć ją zamiast tworzyć nową
       return res.status(200).send(existingConversation);
     }
 
+    // Create a new conversation
     const newConversation = new Conversation({
-      //id: uuidv4(),
-      id: userId + to,
+      id: uuidv4(), // Use uuid for unique conversation ID
       sellerId: userId,
       buyerId: to,
     });
@@ -39,7 +43,7 @@ export const updateConversation = async (req, res, next) => {
     const updatedConversation = await Conversation.findOneAndUpdate(
       { id: req.params.id },
       {
-        
+        // Add the fields to update here
       },
       { new: true }
     );
@@ -62,7 +66,7 @@ export const getSingleConversation = async (req, res, next) => {
 
 export const getConversations = async (req, res, next) => {
   try {
-    const userId = req.userId;  // ID zalogowanego użytkownika
+    const userId = req.userId; // ID of the logged-in user
     const conversations = await Conversation.find({
       $or: [
         { sellerId: userId },

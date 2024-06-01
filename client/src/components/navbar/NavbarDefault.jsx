@@ -10,7 +10,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import newRequest from "../../utils/newRequest"; // Make sure the path to your request utility is correct
 
-import "./Navbar.scss"; // Ensure your SCSS or CSS path is correct
+import "./Navbar.scss"; 
 
 function NavbarDefault({ setSearchQuery }) {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -53,34 +53,37 @@ function NavbarDefault({ setSearchQuery }) {
               />
             </Form>
           </Nav>
-          <Nav.Link className="cart" as={Link} to="/cart">
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </Nav.Link>
-          <Nav.Link className="messages" as={Link} to="/messages">
-            <FontAwesomeIcon icon={faMessage} />
-          </Nav.Link>
+          
           {currentUser ? (
-            <div className="dropdown ml-auto">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                {currentUser.name}
-              </button>
-              <ul className={`dropdown-menu${dropdownOpen ? ' show' : ''} dropdown-menu-end`} aria-labelledby="dropdownMenuButton">
-                <li className="custom-dropdown-item"><Link className="dropdown-item" to="/add">Add a new product</Link></li>
-                <li className="custom-dropdown-item"><Link className="dropdown-item" to="/orders">Your orders</Link></li> {/* Added link to orders */}
-                <li className="custom-dropdown-item"><Link className="dropdown-item" to={`/profile/${currentUser._id}`}>Your profile</Link></li>
-                <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
-                <li className="custom-dropdown-item">
-                  <Button variant="outline-danger" className="dropdown-item" id="logout-button" onClick={handleLogout}>
-                    Log out
-                  </Button>
-                </li>
-              </ul>
-            </div>
+            <>
+              <Nav.Link className="cart" as={Link} to="/cart">
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </Nav.Link>
+              <Nav.Link className="messages" as={Link} to="/messages">
+                <FontAwesomeIcon icon={faMessage} />
+              </Nav.Link> 
+              <div className="dropdown ml-auto">
+                <button
+                  className="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  {currentUser.name}
+                </button>
+                <ul className={`dropdown-menu${dropdownOpen ? ' show' : ''} dropdown-menu-end`} aria-labelledby="dropdownMenuButton">
+                  <li className="custom-dropdown-item"><Link className="dropdown-item" to="/add">Add a new product</Link></li>
+                  <li className="custom-dropdown-item"><Link className="dropdown-item" to="/orders">Your orders</Link></li> {/* Added link to orders */}
+                  <li className="custom-dropdown-item"><Link className="dropdown-item" to={`/profile/${currentUser._id}`}>Your profile</Link></li>
+                  <li className="custom-dropdown-item"><hr className="dropdown-divider" /></li>
+                  <li className="custom-dropdown-item">
+                    <Button variant="outline-danger" className="dropdown-item" id="logout-button" onClick={handleLogout}>
+                      Log out
+                    </Button>
+                  </li>
+                </ul>
+              </div>
+            </>
           ) : (
             <Button variant="outline-success" id="loginbtn" as={Link} to="/login">
               Log in
@@ -93,3 +96,5 @@ function NavbarDefault({ setSearchQuery }) {
 }
 
 export default NavbarDefault;
+
+
