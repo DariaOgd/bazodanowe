@@ -55,12 +55,8 @@ Copyright (c) 2024 Daria Ogdowska, Matylda Głazik
 - Node.js
 - Express.js
 - MongoDB
-- Mongoose
 
-#### Narzędzia:
-- Webpack
-- ESLint
-- Prettier
+
 
 ### b. Architektura uruchomieniowa
 
