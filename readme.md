@@ -1,7 +1,7 @@
 # Paperback Paradise
 
 ## 1. Charakterystyka oprogramowania
-### Paperback Paradise - Portal społecznościowy do sprzedaży książek
+### Paperback Paradise - Portal do zarządzania antykwariatem online
 
 Paperback Paradise to portal społecznościowy, którego celem jest umożliwienie użytkownikom kupna i sprzedaży książek. Platforma oferuje funkcje takie jak zakładanie profili, zarządzanie ogłoszeniami, przeglądanie i filtrowanie ofert, komunikację między użytkownikami oraz zarządzanie zamówieniami i koszykiem.
 
@@ -131,7 +131,7 @@ npm start
 ```
 ## 5. Testy
 
-## Scenariusze Testowe dla funkcjonalności "Autoryzacja"
+# Scenariusze Testowe dla funkcjonalności "Autoryzacja" (Identyfikator: 1f)
 
 
 ### TC001: Rejestracja użytkownika z poprawnymi danymi

@@ -6,13 +6,11 @@ export const createConversation = async (req, res, next) => {
   const userId = req.userId;
   const to = req.body.to;
 
-  // Prevent user from messaging themselves
   if (userId === to) {
     return next(createError(403, "You cannot message yourself!"));
   }
 
   try {
-    // Check if the conversation already exists
     const existingConversation = await Conversation.findOne({
       $or: [
         { sellerId: userId, buyerId: to },
@@ -24,7 +22,6 @@ export const createConversation = async (req, res, next) => {
       return res.status(200).send(existingConversation);
     }
 
-    // Create a new conversation
     const newConversation = new Conversation({
       id: uuidv4(), // Use uuid for unique conversation ID
       sellerId: userId,
@@ -43,7 +40,6 @@ export const updateConversation = async (req, res, next) => {
     const updatedConversation = await Conversation.findOneAndUpdate(
       { id: req.params.id },
       {
-        // Add the fields to update here
       },
       { new: true }
     );
