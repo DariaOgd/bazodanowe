@@ -31,14 +31,13 @@ Copyright (c) 2024 Daria Ogdowska, Matylda Głazik
 | 3f            | Przeglądanie ogłoszeń     | Użytkownik może przeglądać ogłoszenia na stronie głównej | 1         | Funkcjonalne      |
 | 4f            | Przeglądanie szczegółów   | Użytkownik może przeglądać szczegóły ogłoszeń            | 1         | Funkcjonalne      |
 | 5f            | Zarządzanie koszykiem     | Użytkownik może dodawać, usuwać i przeglądać zawartość koszyka | 1         | Funkcjonalne      |
-| 6f            | Wyświetlanie informacji o koszyku | Użytkownik może zobaczyć informacje co znajduje się w koszyku | 2         | Funkcjonalne      |
-| 7f            | Składanie zamówienia      | Użytkownik może złożyć zamówienie                        | 2         | Funkcjonalne      |
-| 8f            | Wyświetlanie zamówień     | Użytkownik może przeglądać swoje zamówienia              | 2         | Funkcjonalne      |
-| 9f            | Czat                      | Użytkownik może komunikować się ze sprzedawcami          | 3         | Funkcjonalne      |
-| 10f           | Filtrowanie ogłoszeń      | Użytkownik może filtrować ogłoszenia                     | 3         | Funkcjonalne      |
-| 11f           | Sortowanie ogłoszeń       | Użytkownik może sortować ogłoszenia                      | 3         | Funkcjonalne      |
-| 13nf          | Graficzny interfejs       | Będzie istniał graficzny interfejs                       | 1         | Niefunkcjonalna   |
-| 14nf          | Przechodzenie pomiędzy funkcjonalnościami poprzez maksymalnie 5 kliknięć | Umożliwia użytkownikowi szybkie przechodzenie między funkcjonalnościami | 2 | Niefunkcjonalna |
+| 6f            | Składanie zamówienia      | Użytkownik może złożyć zamówienie                        | 2         | Funkcjonalne      |
+| 7f            | Wyświetlanie zamówień     | Użytkownik może przeglądać swoje zamówienia              | 2         | Funkcjonalne      |
+| 8f            | Czat                      | Użytkownik może komunikować się ze sprzedawcami          | 3         | Funkcjonalne      |
+| 9f           | Filtrowanie ogłoszeń      | Użytkownik może filtrować ogłoszenia                     | 3         | Funkcjonalne      |
+| 10f           | Sortowanie ogłoszeń       | Użytkownik może sortować ogłoszenia                      | 3         | Funkcjonalne      |
+| 11nf          | Graficzny interfejs       | Będzie istniał graficzny interfejs                       | 1         | Niefunkcjonalna   |
+| 12nf          | Przechodzenie pomiędzy funkcjonalnościami poprzez maksymalnie 5 kliknięć | Umożliwia użytkownikowi szybkie przechodzenie między funkcjonalnościami | 2 | Niefunkcjonalna |
 
 ## 4. Architektura systemu/oprogramowania
 
@@ -203,7 +202,7 @@ npm start
   6. Wprowadź poprawną cenę w polu "Price".
   7. Dodaj zdjęcia produktu.
   8. Kliknij przycisk "Create".
-- **Oczekiwany wynik**: Wyświetla się komunikat "Product added successfully!" i użytkownik zostaje przekierowany na stronę główną.
+- **Oczekiwany wynik**: Użytkownik zostaje przekierowany na stronę główną i wizi swój produkt.
 
 ### TC002: Edytowanie istniejącego ogłoszenia
 - **Opis**: Test sprawdza, czy użytkownik może poprawnie edytować istniejące ogłoszenie.
@@ -219,7 +218,7 @@ npm start
   6. Wprowadź nową cenę w polu "Price".
   7. Dodaj nowe zdjęcia produktu.
   8. Kliknij przycisk "Save Changes".
-- **Oczekiwany wynik**: Wyświetla się komunikat "Product updated successfully!" i użytkownik zostaje przekierowany na stronę główną.
+- **Oczekiwany wynik**: Dane produktu zostają zmienione w bazie i użytkownik zostaje przekierowany na stronę główną.
 
 ### TC003: Usuwanie istniejącego ogłoszenia
 - **Opis**: Test sprawdza, czy użytkownik może poprawnie usunąć istniejące ogłoszenie.
@@ -232,17 +231,7 @@ npm start
   3. Potwierdź usunięcie ogłoszenia.
 - **Oczekiwany wynik**: Wyświetla się komunikat "Product has been deleted successfully." i ogłoszenie znika z listy ogłoszeń użytkownika.
 
-### TC004: Dodanie ogłoszenia z brakującymi danymi
-- **Opis**: Test sprawdza, czy system prawidłowo reaguje na próbę dodania ogłoszenia z brakującymi danymi.
-- **Priorytet**: 1
-- **Kategoria**: Funkcjonalne
-- **Wymagania wstępne**: Użytkownik jest zalogowany. Strona dodawania ogłoszenia jest dostępna.
-- **Kroki**:
-  1. Otwórz stronę dodawania ogłoszenia.
-  2. Wprowadź tytuł w polu "Title".
-  3. Nie wypełniaj pola "Category".
-  4. Kliknij przycisk "Create".
-- **Oczekiwany wynik**: Wyświetla się komunikat "Please fill in all required fields!".
+
 
 # Test Case dla funkcjonalności "Przeglądanie ogłoszeń" (Identyfikator: 3f)
 
@@ -258,7 +247,7 @@ npm start
 
 ### TC002: Sortowanie ogłoszeń wg najnowszych
 - **Opis**: Test sprawdza, czy użytkownik może sortować ogłoszenia wg najnowszych.
-- **Priorytet**: 1
+- **Priorytet**: 3
 - **Kategoria**: Funkcjonalne
 - **Wymagania wstępne**: Aplikacja jest uruchomiona, strona główna jest dostępna. Baza danych zawiera ogłoszenia.
 - **Kroki**:
@@ -268,7 +257,7 @@ npm start
 
 ### TC003: Sortowanie ogłoszeń wg najstarszych
 - **Opis**: Test sprawdza, czy użytkownik może sortować ogłoszenia wg najstarszych.
-- **Priorytet**: 1
+- **Priorytet**: 3
 - **Kategoria**: Funkcjonalne
 - **Wymagania wstępne**: Aplikacja jest uruchomiona, strona główna jest dostępna. Baza danych zawiera ogłoszenia.
 - **Kroki**:
@@ -278,7 +267,7 @@ npm start
 
 ### TC004: Filtrowanie ogłoszeń wg kategorii
 - **Opis**: Test sprawdza, czy użytkownik może filtrować ogłoszenia wg wybranej kategorii.
-- **Priorytet**: 1
+- **Priorytet**: 3
 - **Kategoria**: Funkcjonalne
 - **Wymagania wstępne**: Aplikacja jest uruchomiona, strona główna jest dostępna. Baza danych zawiera ogłoszenia.
 - **Kroki**:
@@ -288,7 +277,7 @@ npm start
 
 ### TC005: Wyszukiwanie ogłoszeń wg tytułu
 - **Opis**: Test sprawdza, czy użytkownik może wyszukiwać ogłoszenia wg tytułu.
-- **Priorytet**: 1
+- **Priorytet**: 3
 - **Kategoria**: Funkcjonalne
 - **Wymagania wstępne**: Aplikacja jest uruchomiona, strona główna jest dostępna. Baza danych zawiera ogłoszenia.
 - **Kroki**:
@@ -316,7 +305,7 @@ npm start
 - **Kroki**:
   1. Otwórz stronę główną.
   2. Kliknij na wybrane ogłoszenie.
-  3. Sprawdź, czy wyświetlają się informacje o sprzedawcy (np. imię sprzedawcy, link do profilu).
+  3. Sprawdź, czy wyświetlają się informacje o sprzedawcy
 - **Oczekiwany wynik**: Informacje o sprzedawcy są wyświetlane poprawnie na stronie szczegółów ogłoszenia.
 
 ### TC003: Przeglądanie szczegółów kupionego produktu
@@ -329,16 +318,7 @@ npm start
   2. Kliknij na ogłoszenie, którego produkt został kupiony.
 - **Oczekiwany wynik**: Na stronie szczegółów ogłoszenia wyświetla się komunikat "This product has been bought".
 
-### TC004: Dodawanie produktu do koszyka
-- **Opis**: Test sprawdza, czy użytkownik może dodać produkt do koszyka z poziomu strony szczegółów ogłoszenia.
-- **Priorytet**: 1
-- **Kategoria**: Funkcjonalne
-- **Wymagania wstępne**: Aplikacja jest uruchomiona, strona ze szczegółami ogłoszenia jest dostępna. Baza danych zawiera ogłoszenia, a produkt nie został kupiony.
-- **Kroki**:
-  1. Otwórz stronę główną.
-  2. Kliknij na wybrane ogłoszenie.
-  3. Kliknij przycisk "Add to cart".
-- **Oczekiwany wynik**: Produkt zostaje dodany do koszyka, a użytkownik widzi komunikat potwierdzający.
+
 
 
 # Test Case dla funkcjonalności "Zarządzanie koszykiem" (Identyfikator: 5f)
@@ -351,7 +331,7 @@ npm start
 - **Kroki**:
   1. Otwórz stronę szczegółów ogłoszenia.
   2. Kliknij przycisk "Add to cart".
-- **Oczekiwany wynik**: Produkt zostaje dodany do koszyka, a użytkownik widzi komunikat potwierdzający dodanie produktu.
+- **Oczekiwany wynik**: Produkt zostaje dodany do koszyka.
 
 ### TC002: Usuwanie produktu z koszyka
 - **Opis**: Test sprawdza, czy użytkownik może usunąć produkt z koszyka.
@@ -361,8 +341,7 @@ npm start
 - **Kroki**:
   1. Otwórz stronę koszyka.
   2. Kliknij przycisk "Remove" obok wybranego produktu.
-- **Oczekiwany wynik**: Produkt zostaje usunięty z koszyka, a użytkownik widzi komunikat potwierdzający usunięcie produktu.
-
+- **Oczekiwany wynik**: Produkt zostaje usunięty z koszyka
 ### TC003: Przeglądanie zawartości koszyka
 - **Opis**: Test sprawdza, czy użytkownik może przeglądać zawartość swojego koszyka.
 - **Priorytet**: 1
@@ -370,7 +349,7 @@ npm start
 - **Wymagania wstępne**: Aplikacja jest uruchomiona, użytkownik dodał produkty do koszyka.
 - **Kroki**:
   1. Otwórz stronę koszyka.
-- **Oczekiwany wynik**: Użytkownik widzi listę produktów dodanych do koszyka wraz z ich szczegółami (np. nazwa, cena, ilość).
+- **Oczekiwany wynik**: Użytkownik widzi listę produktów dodanych do koszyka wraz z ich szczegółami.
 
 ### TC004: Sprawdzenie łącznej kwoty koszyka
 - **Opis**: Test sprawdza, czy łączna kwota produktów w koszyku jest prawidłowo obliczona.
@@ -392,7 +371,7 @@ npm start
 - **Oczekiwany wynik**: Użytkownik widzi komunikat informujący, że koszyk jest pusty.
 
 
-# Test Case dla funkcjonalności "Składanie zamówienia" (Identyfikator: 7f)
+# Test Case dla funkcjonalności "Składanie zamówienia" (Identyfikator: 6f)
 
 ### TC001: Składanie zamówienia z poprawnymi danymi
 - **Opis**: Test sprawdza, czy użytkownik może złożyć zamówienie z poprawnymi danymi.
@@ -406,7 +385,7 @@ npm start
   4. Kliknij przycisk "Pay Now".
 - **Oczekiwany wynik**: Zamówienie zostaje złożone pomyślnie, użytkownik widzi komunikat potwierdzający złożenie zamówienia i zostaje przekierowany na stronę główną lub stronę potwierdzenia zamówienia.
 
-# Test Case dla funkcjonalności "Wyświetlanie zamówień" (Identyfikator: 8f)
+# Test Case dla funkcjonalności "Wyświetlanie zamówień" (Identyfikator: 7f)
 
 ### TC001: Wyświetlanie zamówień użytkownika
 - **Opis**: Test sprawdza, czy użytkownik może poprawnie wyświetlić swoje zamówienia.
@@ -429,7 +408,7 @@ npm start
 - **Oczekiwany wynik**: Wyświetla się komunikat "You have no orders".
 
 
-# Test Case dla funkcjonalności "Czat" (Identyfikator: 9f)
+# Test Case dla funkcjonalności "Czat" (Identyfikator: 8f)
 
 ### TC001: Rozpoczęcie konwersacji ze sprzedawcą
 - **Opis**: Test sprawdza, czy użytkownik może rozpocząć konwersację ze sprzedawcą.
