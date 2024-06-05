@@ -13,6 +13,13 @@ MIT License
 
 Copyright (c) 2024 Daria Ogdowska, Matylda Głazik
 
+### Uzasadnienie wyboru licencji MIT
+
+1. **Swoboda wykorzystania**: Licencja MIT pozwala na swobodne użycie, modyfikację i dystrybucję kodu, zarówno do celów komercyjnych, jak i niekomercyjnych, co zwiększa potencjalny zasięg projektu.
+
+2. **Prostota i przejrzystość**: Licencja MIT jest krótka i zrozumiała, co ułatwia jej stosowanie i zapewnia, że warunki licencji są łatwe do spełnienia przez wszystkich użytkowników.
+
+3. **Promowanie współpracy**: Otwartość licencji MIT zachęca do współpracy co sprzyja szybkiemu rozwojowi w projekcie.
 
 
 ## 3. Specyfikacja wymagań
@@ -46,9 +53,6 @@ Copyright (c) 2024 Daria Ogdowska, Matylda Głazik
 #### Frontend:
 - React
 - JavaScript/JSX
-- HTML/CSS
-- React Router
-- React Query
 - Sass
 
 #### Backend:
@@ -80,6 +84,7 @@ Copyright (c) 2024 Daria Ogdowska, Matylda Głazik
   - **pages**: Zawiera komponenty stron aplikacji.
   - **reducers**: Zawiera reduktory stanu aplikacji.
   - **utils**: Zawiera pomocnicze funkcje lub moduły.
+  - **context**: Zawiera pliki odpowiedzialne za zarządzanie stanem.
 
 
 
