@@ -11,8 +11,6 @@ Autorzy: Daria Ogdowska i Matylda Głazik
 
 MIT License
 
-Copyright (c) 2024 Daria Ogdowska, Matylda Głazik
-
 ### Uzasadnienie wyboru licencji MIT
 
 1. **Swoboda wykorzystania**: Licencja MIT pozwala na swobodne użycie, modyfikację i dystrybucję kodu, zarówno do celów komercyjnych, jak i niekomercyjnych, co zwiększa potencjalny zasięg projektu.
