@@ -84,7 +84,6 @@ Copyright (c) 2024 Daria Ogdowska, Matylda Głazik
   - **pages**: Zawiera komponenty stron aplikacji.
   - **reducers**: Zawiera reduktory stanu aplikacji.
   - **utils**: Zawiera pomocnicze funkcje lub moduły.
-  - **context**: Zawiera pliki odpowiedzialne za zarządzanie stanem.
 
 
 
@@ -203,7 +202,7 @@ npm start
   6. Wprowadź poprawną cenę w polu "Price".
   7. Dodaj zdjęcia produktu.
   8. Kliknij przycisk "Create".
-- **Oczekiwany wynik**: Użytkownik zostaje przekierowany na stronę główną i wizi swój produkt.
+- **Oczekiwany wynik**: Użytkownik zostaje przekierowany na stronę główną i widzi swój produkt.
 
 ### TC002: Edytowanie istniejącego ogłoszenia
 - **Opis**: Test sprawdza, czy użytkownik może poprawnie edytować istniejące ogłoszenie.
@@ -307,7 +306,7 @@ npm start
   1. Otwórz stronę główną.
   2. Kliknij na wybrane ogłoszenie.
   3. Sprawdź, czy wyświetlają się informacje o sprzedawcy
-- **Oczekiwany wynik**: Informacje o sprzedawcy są wyświetlane poprawnie na stronie szczegółów ogłoszenia.
+- **Oczekiwany wynik**: Informacje o sprzedawcy są wyświetlane poprawnie.
 
 ### TC003: Przeglądanie szczegółów kupionego produktu
 - **Opis**: Test sprawdza, czy na stronie szczegółów ogłoszenia wyświetla się komunikat, że produkt został kupiony.
@@ -384,7 +383,7 @@ npm start
   2. Kliknij przycisk Koszyk
   3. Wypełnij formularz zamówienia poprawnymi danymi
   4. Kliknij przycisk "Pay Now".
-- **Oczekiwany wynik**: Zamówienie zostaje złożone pomyślnie, użytkownik widzi komunikat potwierdzający złożenie zamówienia i zostaje przekierowany na stronę główną lub stronę potwierdzenia zamówienia.
+- **Oczekiwany wynik**: Zamówienie zostaje złożone pomyślnie, użytkownik widzi komunikat potwierdzający złożenie zamówienia i zostaje przekierowany na stronę główną
 
 # Test Case dla funkcjonalności "Wyświetlanie zamówień" (Identyfikator: 7f)
 
