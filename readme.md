@@ -1,9 +1,9 @@
 # Paperback Paradise
 
 ## 1. Charakterystyka oprogramowania
-### Paperback Paradise - Portal do zarządzania antykwariatem online
+### Paperback Paradise - Portal do sprzedaży książek
 
-Paperback Paradise to portal społecznościowy, którego celem jest umożliwienie użytkownikom kupna i sprzedaży książek. Platforma oferuje funkcje takie jak zakładanie profili, zarządzanie ogłoszeniami, przeglądanie i filtrowanie ofert, komunikację między użytkownikami oraz zarządzanie zamówieniami i koszykiem.
+Paperback Paradise to portal, którego celem jest umożliwienie użytkownikom kupna i sprzedaży książek. Platforma oferuje funkcje takie jak zakładanie profili, zarządzanie ogłoszeniami, przeglądanie i filtrowanie ofert, komunikację między użytkownikami oraz zarządzanie zamówieniami i koszykiem.
 
 ## 2. Prawa autorskie
 
