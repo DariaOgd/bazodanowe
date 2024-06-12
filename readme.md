@@ -7,7 +7,7 @@ Paperback Paradise to portal, którego celem jest umożliwienie użytkownikom ku
 
 ## 2. Prawa autorskie
 
-Autorzy: Daria Ogdowska i Matylda Głazik
+Autorzy: Daria Ogdowska i Matylda Głazik, Michał Buchar 
 
 MIT License
 
